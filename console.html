@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Provenance console — RETRY-04</title>
+<meta name="description" content="Provenance console: six sealed nodes, two isolated builds, the divergence between them, forty-seven offline checks and one human signature.">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/fonts-northstar.css">
+<link rel="stylesheet" href="./assets/ns.css">
+<link rel="stylesheet" href="./assets/guard.css">
+</head>
+<body class="app">
+
+<aside class="app-top" aria-label="Build status">
+  <span style="color:var(--blue);font-weight:500">Reference implementation</span>
+  <span class="sep"></span>
+  <span class="hide-sm">Junction 2026 · Tieto · Earned trust in AI code</span>
+  <span class="sp"></span>
+  <span class="ok"><i></i>Offline · no network</span>
+  <span class="sep"></span>
+  <span class="hide-sm">record 2026-11-14</span>
+</aside>
+
+<header class="app-head">
+  <div class="app-head-in">
+    <div class="app-brand">
+      <svg viewBox="0 0 24 24" aria-hidden="true" style="width:28px;height:28px;flex:0 0 auto"><path d="M12 1.2C12.7 7.9 16.1 11.3 22.8 12 16.1 12.7 12.7 16.1 12 22.8 11.3 16.1 7.9 12.7 1.2 12 7.9 11.3 11.3 7.9 12 1.2Z" fill="#0A0C10"/><rect x="10.9" y="10.9" width="2.2" height="2.2" fill="#3F6BFF"/></svg>
+      <span>
+        <span class="k">Provenance console</span>
+        <span class="n">The full record · one change, two AIs, one signature</span>
+        <span class="s">RETRY-04 · AI #1 / AI #2 · six steps · eight files</span>
+      </span>
+    </div>
+    <div class="sp"></div>
+    <div class="chg">
+      <b>te-industry-tech-office/junction26-messagepack-csharp</b>
+      <span>SPEC-RETRY-04 · base 32258fdb · one change</span>
+    </div>
+    <div class="chg">
+      <span>record fingerprint</span>
+      <b id="rootHash">—</b>
+    </div>
+    <a class="btn btn-ghost btn-sm" href="./index.html">← Overview</a>
+  </div>
+</header>
+
+<nav class="app-nav" aria-label="Views">
+  <div class="app-nav-in" role="tablist">
+    <button role="tab" aria-selected="true" data-view="chain">The record <span class="k">1</span></button>
+    <button role="tab" aria-selected="false" data-view="builds">The two attempts <span class="k">2</span></button>
+    <button role="tab" aria-selected="false" data-view="divergence">The differences <span class="k">3</span></button>
+    <button role="tab" aria-selected="false" data-view="validation">The checks <span class="k">4</span></button>
+    <button role="tab" aria-selected="false" data-view="receipt">The signature <span class="k">5</span></button>
+    <button role="tab" aria-selected="false" data-view="limits">Limits <span class="k">6</span></button>
+  </div>
+</nav>
+
+<aside class="app-legend" aria-label="How to read this record">
+  <div class="app-legend-in">
+    <span><i class="dot ok"></i>A green tick means the step is sealed and re-checked</span>
+    <span><i class="dot bad"></i>Red means something was changed or is missing</span>
+    <span><i class="dot"></i>Click any row to read it</span>
+    <span class="sp"></span>
+    <a href="./index.html">← The plain explanation</a>
+  </div>
+</aside>
+
+<main class="app-body">
+  <div id="view" class="view" tabindex="-1"></div>
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-bot" style="border:0;padding-top:0">
+      <span><b style="color:#0B0C0E;font-weight:600">Reference implementation, not a product.</b> No build was executed on a server; the two test suites ran under node 20 and the record ships static.</span>
+      <span class="sp"></span>
+      <span class="mono" id="footHash"></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="./assets/data.js"></script>
+<script src="./assets/chain.js"></script>
+<script src="./assets/console.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "id": "RETRY-04/B",
+  "defaults": {
+    "maxAttempts": 3,
+    "baseMs": 200,
+    "capMs": 2000,
+    "maxRetryAfterMs": 30000,
+    "retryOn": [429, 503, 504]
+  },
+  "notes": "Retry-After is honoured up to the 30 s ceiling named in SPEC-RETRY-04 §4. 504 is retried: the spec is silent, so this is recorded as a divergence rather than a defect."
+}

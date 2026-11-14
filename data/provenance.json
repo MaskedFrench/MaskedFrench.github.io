@@ -1,0 +1,342 @@
+{
+  "schema": "northstar.provenance/v1",
+  "generated": "2026-11-14T09:02:00Z",
+  "change": {
+    "id": "RETRY-04",
+    "title": "Bounded retry with full-jitter backoff",
+    "spec": "SPEC-RETRY-04",
+    "repo": "te-industry-tech-office/junction26-messagepack-csharp",
+    "base": "32258fdb"
+  },
+  "key": {
+    "kid": "demo-2026-11",
+    "alg": "ES256",
+    "public_spki_b64": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA+TzZHZUkww1+iuXDH7i/iO/tqVL3z7a/QDOAvJhsbwZyiQfs8oT+7RIn9CZWSCvIVfPGKInWPjkiFb60iH4qg==",
+    "curve": "P-256"
+  },
+  "nodes": [
+    {
+      "id": "ORIGIN-0042",
+      "digest": "93f8f4b46796367b4a151a651a817850a6877260f562639a00b5d4eb8187fbae",
+      "sig": {
+        "alg": "ES256",
+        "kid": "demo-2026-11",
+        "value": "CPYbLYsiKqAfwyCwTZsQS9L/JzIm/NoUyDAOAnqulGHE5fL6RpkOb17Y1gfGv296BXLLFvKO/3sHVFkw0KmoYA==",
+        "over": "canonical(body) · sorted keys · UTF-8"
+      },
+      "body": {
+        "id": "ORIGIN-0042",
+        "type": "origin",
+        "change": "RETRY-04",
+        "title": "Bounded retry with full-jitter backoff",
+        "spec_ref": "SPEC-RETRY-04",
+        "spec_sha256": "1ee93a0439fb2ff17f2480aad3573e2eaa77e4bcc712bb4a110f870cc8572bf5",
+        "prompt_sha256": "b368a08c5d6813fbb94c84fabb05a9ef00aff6c4137c2a1dcfd67aafe27abf51",
+        "transcript_sha256": "3293b04cd3e203b0a60d2f5a93f1beb179a4c1749354bff94b8849b4c6bb83c9",
+        "author": "prompt-author",
+        "actor_kind": "human",
+        "model": "northstar-builder-demo (recorded session, no runtime call)",
+        "seed": 20261114,
+        "context": "cold · spec only",
+        "created": "2026-11-14T08:12:00Z",
+        "parents": []
+      }
+    },
+    {
+      "id": "BUILD-A",
+      "digest": "ba538a5f829e852f5c1af2108be915b56ca7fc93853cafb3c1637edb08f8e7fd",
+      "sig": {
+        "alg": "ES256",
+        "kid": "demo-2026-11",
+        "value": "iyLyX10mg2vswXT4svE9XsdU1q07LaiIBelsfpo+k/mQKFSKsD1u/5R6DeGVfU1sRnFrEH2AzyG45Wz+0osX0w==",
+        "over": "canonical(body) · sorted keys · UTF-8"
+      },
+      "body": {
+        "id": "BUILD-A",
+        "type": "build",
+        "role": "builder",
+        "agent": "builder-01",
+        "actor_kind": "agent",
+        "change": "RETRY-04",
+        "context": "cold · spec only",
+        "isolation": "no access to any other build",
+        "parent": {
+          "id": "ORIGIN-0042",
+          "digest": "93f8f4b46796367b4a151a651a817850a6877260f562639a00b5d4eb8187fbae"
+        },
+        "origin_spec_sha256": "1ee93a0439fb2ff17f2480aad3573e2eaa77e4bcc712bb4a110f870cc8572bf5",
+        "root": "2d203cb30b6122207644f1669f218b21448bd4f33be438b4d9428dc9b662c239",
+        "files": [
+          {
+            "path": "NOTES.md",
+            "sha256": "061e4f9262f31e19bd666fefb0fdd26357fbe091b5ca3515b512cdbf681623d0",
+            "bytes": 1569
+          },
+          {
+            "path": "src/policy.json",
+            "sha256": "d5c5aca5c0473ad3041bca16c1ce7a8330d917eb76a7cd59b4ebffbbcf05b41b",
+            "bytes": 221
+          },
+          {
+            "path": "src/retry.js",
+            "sha256": "a5dd2d75744ef235c7ebc136701fcd0235498c749a183b41c92771a1d863d5cf",
+            "bytes": 2989
+          },
+          {
+            "path": "test/retry.test.js",
+            "sha256": "093cdc5e80bd73616496ccb88eb17ea4dc1751933d06f2f0de69adc595ff6dd3",
+            "bytes": 2659
+          }
+        ],
+        "bytes": 7438,
+        "tooling": "node 20 · tests executed locally · no network",
+        "created": "2026-11-14T08:41:12Z"
+      }
+    },
+    {
+      "id": "BUILD-B",
+      "digest": "c0cdd6aabbeba6c966684cba4044a1c39395a61a03344f4b15ba5d8fb073c783",
+      "sig": {
+        "alg": "ES256",
+        "kid": "demo-2026-11",
+        "value": "x47VxwlJw24ssI7svwWyAyqv5+CqHncIAFmTlEmtInkqWlspiT6luk2FDaK4tCYA/VZgRg8jcaNgOBzcDALFbQ==",
+        "over": "canonical(body) · sorted keys · UTF-8"
+      },
+      "body": {
+        "id": "BUILD-B",
+        "type": "build",
+        "role": "reviewer",
+        "agent": "reviewer-02",
+        "actor_kind": "agent",
+        "change": "RETRY-04",
+        "context": "cold · spec only",
+        "isolation": "no access to BUILD-A · separate context, separate workspace",
+        "parent": {
+          "id": "ORIGIN-0042",
+          "digest": "93f8f4b46796367b4a151a651a817850a6877260f562639a00b5d4eb8187fbae"
+        },
+        "origin_spec_sha256": "1ee93a0439fb2ff17f2480aad3573e2eaa77e4bcc712bb4a110f870cc8572bf5",
+        "root": "30fbf369801c7a920d5a97f6b64a2a8408ba6a8749e14f683610e93d914c1d6d",
+        "files": [
+          {
+            "path": "NOTES.md",
+            "sha256": "931d59a8bf3e48d54796b5ab97a36f28e613c518c8a3d3f4eb28aeaa43989812",
+            "bytes": 1824
+          },
+          {
+            "path": "src/policy.json",
+            "sha256": "65eca9c35f87d3ff6e822221587aa8bc008c2d990c8eda2afb8e4e0f50e5479c",
+            "bytes": 350
+          },
+          {
+            "path": "src/retry.js",
+            "sha256": "947551f10cfd0abae932ad65e3505761fc59e5c05418ab0bc72d976328175eb2",
+            "bytes": 3276
+          },
+          {
+            "path": "test/retry.test.js",
+            "sha256": "d77f9dccd31624f384efef2883bc3679c6cc0f2ac34852c00b86e42cc8c5d3cb",
+            "bytes": 4684
+          }
+        ],
+        "bytes": 10134,
+        "tooling": "node 20 · tests executed locally · no network",
+        "created": "2026-11-14T08:44:30Z"
+      }
+    },
+    {
+      "id": "DIVERGENCE-01",
+      "digest": "75d3b3e64d4e9ebe6b00c2d8fc77b87e5d3017088472e3baa930b3d2655ba956",
+      "sig": {
+        "alg": "ES256",
+        "kid": "demo-2026-11",
+        "value": "zjKAmFKG46fIbjqQC1QE0PAgtUMwyjb0dWqRV4HPHFYh0DUMCoV4MrLrHeBYZsumLdArmnDE4YvUR9LmnPq3qQ==",
+        "over": "canonical(body) · sorted keys · UTF-8"
+      },
+      "body": {
+        "id": "DIVERGENCE-01",
+        "type": "divergence",
+        "agent": "reviewer-02",
+        "actor_kind": "agent",
+        "method": "reviewer suite executed against both builds · file-level hash diff · spec clause mapping",
+        "parents": [
+          {
+            "id": "BUILD-A",
+            "digest": "ba538a5f829e852f5c1af2108be915b56ca7fc93853cafb3c1637edb08f8e7fd"
+          },
+          {
+            "id": "BUILD-B",
+            "digest": "c0cdd6aabbeba6c966684cba4044a1c39395a61a03344f4b15ba5d8fb073c783"
+          }
+        ],
+        "summary": {
+          "cases": 8,
+          "pass": 5,
+          "fail": 3,
+          "blocking": 2,
+          "accepted": 1
+        },
+        "findings": [
+          {
+            "id": "F-01",
+            "severity": "blocking",
+            "title": "Retry-After is truncated at 8 s — the spec names 30 s",
+            "spec": "SPEC-RETRY-04 §4",
+            "claim": "Retry-After of 30 s is honoured in full (SPEC §4 ceiling)",
+            "detail": "Build A caps the server hint at 8 000 ms. A gateway asking for 30 s is retried after 8 s, three attempts inside 20 s, which is the load pattern the hint exists to prevent. The 5 s case passes, so A's own suite cannot see it.",
+            "fix": "Honour the hint up to 30 000 ms, or change the spec — but not silently.",
+            "evidence": {
+              "run": "TESTS-B × BUILD-A",
+              "case": "B5",
+              "observed": "waited 30 s, not a truncated hint: expected 30000, got 8000",
+              "counterpart": "pass"
+            },
+            "status": "open"
+          },
+          {
+            "id": "F-02",
+            "severity": "blocking",
+            "title": "A POST without an idempotency key is retried with a fresh key",
+            "spec": "SPEC-RETRY-04 §6",
+            "claim": "A POST without a caller-supplied key is refused, not retried",
+            "detail": "Build A invents a key when the caller supplies none, and generates a new one per attempt. A retry of a non-idempotent request can therefore write twice. §6 requires a refusal before the first attempt leaves the process.",
+            "fix": "Refuse with a typed error before any I/O; never mint a key inside the retry loop.",
+            "evidence": {
+              "run": "TESTS-B × BUILD-A",
+              "case": "B6",
+              "observed": "throws before the first attempt: expected truthy, got null · error type: expected \"NonIdempotentRequest\", got null · no request was made: expected 0, got 1",
+              "counterpart": "pass"
+            },
+            "status": "open"
+          },
+          {
+            "id": "F-03",
+            "severity": "accepted-divergence",
+            "title": "504 is retried by B and not by A — the spec is silent",
+            "spec": "SPEC-RETRY-04 §3",
+            "claim": "504 is retried (spec silent — recorded as a divergence)",
+            "detail": "A reads the retryable list as closed; B reads it as a minimum. Neither contradicts a normative sentence. Recorded as a divergence to be decided in the spec, not as a defect in a build.",
+            "fix": "Name 504 in §3 either way. Until then the behaviour is recorded, not scored.",
+            "evidence": {
+              "run": "TESTS-B × BUILD-A",
+              "case": "B8",
+              "observed": "gateway timeout retried: expected 200, got 504",
+              "counterpart": "pass"
+            },
+            "status": "accepted"
+          }
+        ],
+        "notes": [
+          {
+            "id": "N-01",
+            "title": "Both suites pass against the build that wrote them",
+            "detail": "TESTS-A × BUILD-A: 4/4. TESTS-B × BUILD-B: 8/8. A suite written beside an implementation tests that implementation's reading, not the spec."
+          },
+          {
+            "id": "N-02",
+            "title": "The reviewer's suite is compatible with the builder's build",
+            "detail": "TESTS-A × BUILD-B: 4/4. The divergence is not a rewrite; it is confined to the boundaries A never tested."
+          },
+          {
+            "id": "N-03",
+            "title": "Divergence is the signal",
+            "detail": "3 of 8 reviewer cases fail against the builder's build. A single-agent review would have returned 4/4 and a green tick."
+          }
+        ],
+        "created": "2026-11-14T08:47:05Z"
+      }
+    },
+    {
+      "id": "ATTEST-01",
+      "digest": "afedf286f974fe0876eb5f8f5b6ee94e031e1d8d1d9cfc3cf89dc9351f1bbb39",
+      "sig": {
+        "alg": "ES256",
+        "kid": "demo-2026-11",
+        "value": "1kBFLz7Gk5mx8122vQi34J/VkWb/a6vfjE1RSUs7+FIQohXsYBGtMAdAR7e3ikfXW6/qoR74OJTjMoDSGJyO8Q==",
+        "over": "canonical(body) · sorted keys · UTF-8"
+      },
+      "body": {
+        "id": "ATTEST-01",
+        "type": "attestation",
+        "agent": "reviewer-02",
+        "actor_kind": "agent",
+        "role": "reviewer of record",
+        "parent": {
+          "id": "DIVERGENCE-01",
+          "digest": "75d3b3e64d4e9ebe6b00c2d8fc77b87e5d3017088472e3baa930b3d2655ba956"
+        },
+        "verdict": "changes-required",
+        "conditions": [
+          "F-01: honour Retry-After up to 30 000 ms, or amend the spec through change control.",
+          "F-02: refuse a non-idempotent request without a caller key, before any I/O.",
+          "F-03: decide 504 in §3; until then the divergence is recorded and unscored.",
+          "Re-run TESTS-B against BUILD-A and attach the result to this record."
+        ],
+        "refusals": [
+          {
+            "id": "R-01",
+            "text": "No integration run: the transport is a stub in every case; no live gateway was called."
+          },
+          {
+            "id": "R-02",
+            "text": "No load or timing measurement: jitter bounds are asserted arithmetically."
+          },
+          {
+            "id": "R-03",
+            "text": "This build does not execute the payments service and does not claim to."
+          }
+        ],
+        "counts": {
+          "claims": 8,
+          "supported": 5,
+          "disputed": 3
+        },
+        "created": "2026-11-14T08:49:40Z"
+      }
+    },
+    {
+      "id": "RECEIPT-0042",
+      "digest": "bcc4aaeb3575168273dcaa2a505801736ac2623bf157f2af10f433aebd9d6802",
+      "sig": {
+        "alg": "ES256",
+        "kid": "demo-2026-11",
+        "value": "YVLrCQ5xhEX1cn/MvcV2RA0arM6i6BGQe5ctcD2leKtnu0GAfsp02MPYBTN1NQpZiDA7yJU+tVwbmDkJh58XRA==",
+        "over": "canonical(body) · sorted keys · UTF-8"
+      },
+      "body": {
+        "id": "RECEIPT-0042",
+        "type": "receipt",
+        "actor": "A. Kaissi",
+        "actor_kind": "human",
+        "role": "reviewer of record",
+        "organisation": "Latvian Ghostbusters",
+        "parent": {
+          "id": "ATTEST-01",
+          "digest": "afedf286f974fe0876eb5f8f5b6ee94e031e1d8d1d9cfc3cf89dc9351f1bbb39"
+        },
+        "decision": "accept-with-conditions",
+        "merge": "blocked",
+        "acknowledged": [
+          "F-01",
+          "F-02",
+          "F-03",
+          "R-01",
+          "R-02",
+          "R-03"
+        ],
+        "conditions": [
+          "F-01: honour Retry-After up to 30 000 ms, or amend the spec through change control.",
+          "F-02: refuse a non-idempotent request without a caller key, before any I/O.",
+          "F-03: decide 504 in §3; until then the divergence is recorded and unscored.",
+          "Re-run TESTS-B against BUILD-A and attach the result to this record."
+        ],
+        "note": "The divergence is the useful part. Fix both blocking findings, re-run the reviewer suite, then merge.",
+        "time_to_sign_s": 214,
+        "no_look_threshold_s": 10,
+        "no_look": false,
+        "created": "2026-11-14T08:57:12Z"
+      }
+    }
+  ],
+  "demo_note": "The signing key ships with the package because this is a demonstration. In production the builder, reviewer and human keys are separate and live in an HSM; the record is identical."
+}

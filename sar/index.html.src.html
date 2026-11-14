@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>National SAR Crisis Management Centre — Latvian Ghostbusters</title>
+<meta name="description" content="National search and rescue console: the assistant recommends, a duty officer decides. Synthetic exercise data.">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/system.css">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body class="ops">
+
+<div class="topbar">
+  <span class="red">Synthetic exercise</span>
+  <span class="sep"></span>
+  <span class="hide-sm">Not connected to live systems</span>
+  <span class="sep hide-sm"></span>
+  <span class="hide-sm">Junction 2026 · Tieto challenge</span>
+  <span class="grow"></span>
+  <span class="off"><i></i>Offline · no network</span>
+  <span class="sep"></span>
+  <span class="mono" id="simdate">EXERCISE DAY 1 · 06:40</span>
+</div>
+
+<header class="opshead">
+  <div class="brandline">
+    <img class="seal" src="../assets/brand/emblem-seal.png" alt="Latvian Ghostbusters">
+    <div class="txt">
+      <div class="kicker">Synthetic exercise · Junction 2026</div>
+      <div class="name">National SAR Crisis Management Centre</div>
+      <div class="sub">Latvian Ghostbusters · Rīga</div>
+    </div>
+  </div>
+
+  <div class="clockblock">
+    <div class="clockwrap">
+      <div class="clock" id="clock">06:40</div>
+      <div class="clockmeta"><span class="livedot"></span>SIM TIME · DAY 1</div>
+    </div>
+    <div class="duty">
+      <span class="label">Duty officer</span>
+      <b>On watch</b>
+      <span class="mono dim">Shift 06:00–18:00</span>
+    </div>
+    <span class="tag red">Prototype</span>
+    <span class="supp">
+      <span class="k">Supported by</span>
+      <img src="../assets/brand/ajelix-lockup-ink.png" alt="Ajelix">
+    </span>
+  </div>
+</header>
+
+<nav class="nav opsnav" id="tabs" aria-label="Views">
+  <button data-view="command" class="on">01 · Command</button>
+  <button data-view="search">02 · Search plan</button>
+  <button data-view="validation">03 · Validation</button>
+  <button data-view="units">04 · Units</button>
+  <button data-view="forecast">05 · Forecast</button>
+  <button data-view="analysis">06 · Analysis</button>
+  <a class="navlink" href="../sarops/index.html" title="Open the SAROPS workbench">07 · SAROPS ↗</a>
+  <span class="navspacer"></span>
+  <span class="regionstrip" id="regionstrip"></span>
+</nav>
+
+<main id="view" tabindex="-1"></main>
+
+<footer class="foot opsfoot">
+  <div class="in">
+    <img src="../assets/brand/emblem-seal-300.png" alt="" width="26" height="26" style="opacity:.9">
+    <span><b>So others may live.</b> Lai citi dzīvotu. · Synthetic exercise data, callsigns only, no personal data.</span>
+    <span class="r">TEAM LATVIAN GHOSTBUSTERS · <span id="footclock">06:40</span></span>
+    <span class="sp"><span class="k">Supported by</span><img src="../assets/brand/ajelix-lockup-white.png" alt="Ajelix"></span>
+  </div>
+</footer>
+
+<div id="modal-root"></div>
+
+<script src="./data.js"></script>
+<script src="./search.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

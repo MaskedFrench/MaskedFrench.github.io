@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northstar Trust — the one-page version</title>
+<meta name="description" content="The whole idea on one page: one AI writes, a second AI rebuilds it blind, a person signs the difference. Printable on A4.">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/fonts-northstar.css">
+<link rel="stylesheet" href="./assets/ns.css">
+<link rel="stylesheet" href="./assets/guard.css">
+<style>
+  .brief{background:var(--paper-2);padding:clamp(14px,3vw,40px)}
+  .sheet{max-width:900px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:clamp(24px,4vw,42px);box-shadow:var(--sh-1)}
+  .brief-top{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--ink);
+    margin-bottom:24px;font-size:13px}
+  .brief-top svg{width:20px;height:20px;flex:0 0 auto}
+  .brief-top b{font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+  .brief-top .sp{flex:1}
+  .brief-top .tag{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+  .sheet h1{font-size:clamp(26px,3.4vw,40px);letter-spacing:-.04em;line-height:1.04;max-width:22ch}
+  .eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+    display:flex;align-items:center;gap:8px;margin-bottom:10px}
+  .eyebrow::before{content:"";width:6px;height:6px;background:var(--blue)}
+  .standfirst{font-size:14.5px;line-height:1.6;color:#3B424F;margin-top:12px;max-width:74ch}
+  .bcols{display:grid;grid-template-columns:1.05fr 1fr;gap:26px;margin-top:22px}
+  .sheet h2{font-size:11px;font-family:var(--mono);letter-spacing:.13em;text-transform:uppercase;font-weight:400;
+    color:var(--muted-2);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .sheet p{font-size:13px;line-height:1.6;color:#3B424F}
+  .bstep{display:grid;grid-template-columns:20px 1fr;gap:9px;margin-bottom:9px}
+  .bstep b{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--ink);color:#fff;
+    font-family:var(--mono);font-size:9px;font-weight:400}
+  .bstep span{font-size:12.5px;line-height:1.55;color:#3B424F}
+  .bstep span b{display:inline;background:none;color:var(--ink);font-weight:600;width:auto;height:auto;font-family:inherit;font-size:inherit}
+  .figs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);
+    border-radius:6px;overflow:hidden;margin-top:4px}
+  .figs div{background:#fff;padding:8px 10px}
+  .figs span{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
+  .figs b{font-size:17px;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .figs b em{font-style:normal;color:var(--muted-2);font-weight:400;font-size:12px}
+  .chain{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:24px;padding-top:16px;border-top:1px solid var(--line)}
+  .chain .c{display:flex;align-items:center;gap:7px;border:1px solid var(--line-2);border-radius:99px;padding:5px 10px;
+    font-size:11px;background:#fff}
+  .chain .c i{font-family:var(--mono);font-style:normal;font-size:8.5px;color:var(--blue)}
+  .chain .c.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chain .c.dark i{color:#9DB4FF}
+  .chain .a{color:var(--line-3);font-size:11px}
+  .blist{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+  .blist ul{display:flex;flex-direction:column;gap:5px}
+  .blist li{display:grid;grid-template-columns:14px 1fr;gap:8px;font-size:12px;line-height:1.5;color:#3B424F}
+  .blist .y{color:var(--ok)}
+  .blist .n{color:var(--stop)}
+  .bfoot{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px;padding-top:12px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2)}
+  .bfoot .sp{flex:1}
+  .bfoot a{color:var(--blue);text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:12px}
+  .printonly{display:none}
+  @media print{
+    @page{size:A4;margin:13mm}
+    .brief{background:#fff;padding:0}
+    .sheet{border:0;box-shadow:none;border-radius:0;padding:0;max-width:none}
+    .printonly{display:inline}
+    .screenonly{display:none}
+    body{font-size:11px}
+    .sheet h1{font-size:26px}
+    a{color:inherit;text-decoration:none}
+  }
+  @media (max-width:680px){.bcols,.blist{grid-template-columns:1fr;gap:18px}
+    .chain .a{display:none}.chain{gap:5px}.chain .c{font-size:10.5px;padding:4px 8px}}
+  @media (max-width:520px){.brief-top .tag{display:none}}
+</style>
+</head>
+<body class="brief">
+<main class="sheet">
+
+  <div class="brief-top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.2C12.7 7.9 16.1 11.3 22.8 12 16.1 12.7 12.7 16.1 12 22.8 11.3 16.1 7.9 12.7 1.2 12 7.9 11.3 11.3 7.9 12 1.2Z" fill="#0A0C10"/><rect x="10.9" y="10.9" width="2.2" height="2.2" fill="#3A64F5"/></svg>
+    <b>Northstar Trust</b>
+    <span class="sp"></span>
+    <span class="tag">The one-page version · RETRY-04</span>
+  </div>
+
+  <p class="eyebrow">AI you can check</p>
+  <h1>Two AIs check each other. A person signs.</h1>
+  <p class="standfirst">Most AI mistakes do not look like mistakes — they look like finished work. So one AI writes the
+    change, a second AI builds it again without seeing the first attempt, and the places where they disagree go to a
+    person. Every step is fingerprinted, so the record can be checked later. This is one real change, end to end.</p>
+
+  <div class="bcols">
+    <div>
+      <h2>The problem</h2>
+      <p>A single AI reviewing its own output is one opinion, twice. It reads with the same blind spots that produced
+        the error, and it will usually say the work is fine. Once the session closes, nobody can show what was asked,
+        what was produced, or who approved it.</p>
+      <p style="margin-top:8px">A signature with nothing recorded behind it is a click, not a review.</p>
+    </div>
+    <div>
+      <h2>What happens instead</h2>
+      <div class="bstep"><b>1</b><span><b>One AI writes it.</b> It gets the job and the rules, and writes its own tests.</span></div>
+      <div class="bstep"><b>2</b><span><b>A second AI rebuilds it blind.</b> Same rules, fresh start, never sees the first attempt.</span></div>
+      <div class="bstep"><b>3</b><span><b>A person signs the differences.</b> Each disagreement is listed with the rule it touches. The button stays locked until every item is ticked.</span></div>
+    </div>
+  </div>
+
+  <div class="bcols" style="grid-template-columns:1fr;margin-top:18px">
+    <div>
+      <h2>What it found, in one row</h2>
+      <div class="figs">
+        <div><span>AI #1’s own tests</span><b>4<em>/4 pass</em></b></div>
+        <div><span>AI #2’s tests against AI #1</span><b>5<em>/8 pass</em></b></div>
+        <div><span>AI #2’s tests against itself</span><b>8<em>/8 pass</em></b></div>
+        <div><span>Must be fixed before shipping</span><b>2<em> mistakes</em></b></div>
+      </div>
+      <p style="margin-top:9px;font-size:12px">One AI alone would have reported 4 out of 4 and called it finished. The
+        two mistakes: retries come back too early when the payment system asks for a longer wait, and a retried
+        payment could be taken twice because a new tracking code is invented on each try.</p>
+    </div>
+  </div>
+
+  <div class="chain" aria-label="The six steps of the record">
+    <span class="c"><i>1</i>The instruction</span><span class="a">→</span>
+    <span class="c"><i>2</i>First attempt</span><span class="a">→</span>
+    <span class="c"><i>3</i>Second attempt</span><span class="a">→</span>
+    <span class="c"><i>4</i>The differences</span><span class="a">→</span>
+    <span class="c"><i>5</i>The review</span><span class="a">→</span>
+    <span class="c dark"><i>6</i>A person signs</span>
+  </div>
+
+  <div class="blist">
+    <div>
+      <h2>What the record proves</h2>
+      <ul>
+        <li><span class="y">✓</span><span>Two attempts exist, and neither AI saw the other’s work.</span></li>
+        <li><span class="y">✓</span><span>Each disagreement points at a rule and a test that actually failed.</span></li>
+        <li><span class="y">✓</span><span>A named person saw every item before signing.</span></li>
+        <li><span class="y">✓</span><span>Nothing has changed since — re-computable by anyone.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h2>What it does not prove</h2>
+      <ul>
+        <li><span class="n">×</span><span>That the rules themselves are right or complete.</span></li>
+        <li><span class="n">×</span><span>That it works in production — no live service was contacted.</span></li>
+        <li><span class="n">×</span><span>That the signer read carefully. Only that they were shown it, and how long it took.</span></li>
+        <li><span class="n">×</span><span>That two AIs agreeing means they are correct. It means they agree.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bfoot">
+    <span>Latvian Ghostbusters · Rīga</span>
+    <span>·</span>
+    <span>Junction 2026 · Tieto</span>
+    <span class="sp"></span>
+    <a href="./index.html" class="screenonly">Full explanation →</a>
+    <a href="./console.html" class="screenonly">The record itself →</a>
+    <span class="printonly">index.html · the explanation &nbsp;|&nbsp; console.html · the record</span>
+  </div>
+
+</main>
+</body>
+</html>

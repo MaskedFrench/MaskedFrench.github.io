@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Review Receipt — Bauhaus deck</title>
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="./deck.css">
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- 01 ---------------------------------------------------------------- cover -->
+<section class="slide s-cover" data-n="01">
+  <div class="cov-circle"></div>
+  <div class="cov-ring"></div>
+  <div class="cov-grid"></div>
+  <img class="cov-seal" src="../assets/brand/emblem-seal.png" alt="Latvian Ghostbusters">
+  <div class="cov-text">
+    <div class="kicker">Junction 2026 · Tieto · Earned Trust in AI Code</div>
+    <h1>Review<br>Receipt</h1>
+    <div class="cov-rule"></div>
+    <p>The AI recommends.<br>A person signs.</p>
+  </div>
+  <div class="cov-meta">
+    <span>TEAM LATVIAN GHOSTBUSTERS</span>
+    <span>RĪGA · 56.9496° N</span>
+    <span>REFERENCE IMPLEMENTATION</span>
+  </div>
+  <div class="slide-foot dark">
+    <span>LATVIAN GHOSTBUSTERS</span><span>01 / 16</span><span>SUPPORTED BY AJELIX</span>
+  </div>
+</section>
+
+<!-- 02 -------------------------------------------------------------- the fact -->
+<section class="slide" data-n="02">
+  <header class="slide-head"><span>01 · THE PROBLEM</span><span>EVIDENCE FIRST</span></header>
+  <div class="fact">
+    <div class="fact-year">Feb<br>2026</div>
+    <div class="fact-copy">
+      <h2>Agent tokens<br>passed human tokens.</h2>
+      <p>Review capacity did not move. The bottleneck is no longer writing code — it is deciding, defensibly,
+        whether a change may merge, and who is accountable when it does.</p>
+    </div>
+  </div>
+  <div class="fact-bar">
+    <div><b>1</b><span>agent change, four files, can change what every developer sees</span></div>
+    <div><b>237</b><span>files in another change, and nobody needs to read all of them</span></div>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>02 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 03 ---------------------------------------------------------- the inversion -->
+<section class="slide" data-n="03">
+  <header class="slide-head"><span>02 · THE INVERSION</span><span>BLAST RADIUS, NOT DIFF SIZE</span></header>
+  <h2 class="big-h">Diff size says the wrong thing.</h2>
+  <div class="inv">
+    <div class="inv-col">
+      <div class="inv-num">237</div>
+      <div class="inv-lab">files · +1,383 lines</div>
+      <div class="inv-class b">CLASS B</div>
+      <p>222 regenerated goldens. Two source edits. <b>368 of 368</b> attribute emissions guarded, provable in one
+        invariant check. No person needed.</p>
+      <div class="inv-tag">#2297 · bounded, machine-verifiable</div>
+    </div>
+    <div class="inv-div"></div>
+    <div class="inv-col red">
+      <div class="inv-num">4</div>
+      <div class="inv-lab">files · +225 lines</div>
+      <div class="inv-class a">CLASS A</div>
+      <p>It changes which diagnostics users see. An error that used to appear in an IDE can now be dropped.
+        <b>A person is required.</b></p>
+      <div class="inv-tag">#2283 · attention path</div>
+    </div>
+  </div>
+  <div class="inv-bottom">
+    <div class="inv-bottom-rule"></div>
+    <p>Route on blast radius. Never on line count.</p>
+    <span>REQ-MP-2283 · 4 files · a person &nbsp;|&nbsp; REQ-MP-2297 · 237 files · one invariant</span>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>03 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 04 -------------------------------------------------------- three artefacts -->
+<section class="slide" data-n="04">
+  <header class="slide-head"><span>03 · THE CONCEPT</span><span>DOSSIER → RECEIPT → LEDGER</span></header>
+  <h2 class="big-h">Three artefacts. One chain of custody.</h2>
+  <div class="tri">
+    <div class="tri-card">
+      <div class="tri-n">01</div>
+      <div class="tri-circle"></div>
+      <h3>Dossier</h3>
+      <p class="tri-sub">Written by the agent, verified by an independent reviewer.</p>
+      <ul>
+        <li>Requirement ID and clauses served</li>
+        <li>One claim per behaviour change</li>
+        <li>A re-runnable check per claim</li>
+        <li>Confidence per claim, not per PR</li>
+        <li>Explicit refusals</li>
+        <li>What was not checked</li>
+      </ul>
+    </div>
+    <div class="tri-card mid">
+      <div class="tri-n">02</div>
+      <div class="tri-circle"></div>
+      <h3>Receipt</h3>
+      <p class="tri-sub">Signed by a named human.</p>
+      <ul>
+        <li>Checked, and by what</li>
+        <li>Not checked, and why</li>
+        <li>Reported, owner decides</li>
+        <li>Residual risk accepted</li>
+        <li>Bound to the dossier hash</li>
+        <li>Valid only for what was seen</li>
+      </ul>
+    </div>
+    <div class="tri-card">
+      <div class="tri-n">03</div>
+      <div class="tri-circle"></div>
+      <h3>Ledger</h3>
+      <p class="tri-sub">Joined from outcomes, not self-reported.</p>
+      <ul>
+        <li>Reverts within 14 days</li>
+        <li>Linked incidents</li>
+        <li>Claim accuracy per area</li>
+        <li>Trust score per area</li>
+        <li>Routing changes it earns</li>
+        <li>Published miss rate</li>
+      </ul>
+    </div>
+  </div>
+  <p class="tri-note">The AI has no signature line anywhere in the system. That is the whole design.</p>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>04 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 05 ----------------------------------------------------------- the rules -->
+<section class="slide" data-n="05">
+  <header class="slide-head"><span>04 · PRINCIPLES</span><span>EIGHT RULES, EIGHT COSTS</span></header>
+  <h2 class="big-h">A machine may not approve.</h2>
+  <div class="rules">
+    <div class="rule"><span>01</span><b>A machine may not approve</b><p>It produces evidence and refusals. Approval is a signature bound to a hash.</p><em>A human hour per Class A change. Accepted.</em></div>
+    <div class="rule"><span>02</span><b>Every claim has a check</b><p>No requirement ID, no re-runnable check — it is prose, not evidence.</p><em>Dossiers take longer to write. Accepted.</em></div>
+    <div class="rule"><span>03</span><b>Confidence is per claim</b><p>Not one score per pull request. Calibrated against outcomes later.</p><em>Calibration work per area. Accepted.</em></div>
+    <div class="rule"><span>04</span><b>Refusal is an output</b><p>Product intent is escalated and counted, never guessed.</p><em>Honest gaps are visible to auditors. Intended.</em></div>
+    <div class="rule"><span>05</span><b>Depth follows blast radius</b><p>Reachability, not line count. 237 goldens need one invariant.</p><em>A classifier to build and own. Accepted.</em></div>
+    <div class="rule"><span>06</span><b>The receipt records absence</b><p>A skipped build is printed on the artefact being signed.</p><em>Skipped tests stay on the record. Intended.</em></div>
+    <div class="rule"><span>07</span><b>Trust is withdrawable</b><p>One escape puts that area back on the attention path.</p><em>A ledger nobody can fake cheaply. Accepted.</em></div>
+    <div class="rule"><span>08</span><b>The reviewer is reviewed</b><p>Seeded defects, published miss rate, no-look signature detection.</p><em>Weekly spot checks, published misses. Accepted.</em></div>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>05 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 06 --------------------------------------------------------- the artefacts -->
+<section class="slide s-dark" data-n="06">
+  <header class="slide-head light"><span>05 · THE BUILD</span><span>STATIC · OFFLINE · HONEST</span></header>
+  <h2 class="big-h light">Two artefacts, one pattern.</h2>
+  <div class="shots">
+    <figure>
+      <img src="../assets/shots/review-dossier.jpg" alt="Review Receipt dossier">
+      <figcaption><b>Review Receipt</b> — four dossiers, a receipt gate, a merge set, a ledger</figcaption>
+    </figure>
+    <figure>
+      <img src="../assets/shots/sar-command.jpg" alt="SAR command console">
+      <figcaption><b>SAR console</b> — twelve incidents, sixteen teams, one duty officer</figcaption>
+    </figure>
+  </div>
+  <div class="shot-strip">
+    <div><b>0</b><span>network requests</span></div>
+    <div><b>0</b><span>model calls at runtime</span></div>
+    <div><b>2</b><span>consoles, one design system</span></div>
+    <div><b>273</b><span>files of real diffs inlined</span></div>
+  </div>
+  <p class="dark-note">The dossiers were authored over the real diffs and ship as static content. Nothing is fetched when the page runs.</p>
+  <div class="slide-foot dark"><span>REVIEW RECEIPT</span><span>06 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 07 ------------------------------------------------------------- evidence -->
+<section class="slide" data-n="07">
+  <header class="slide-head"><span>06 · EVIDENCE</span><span>MEASURED IN THIS EXERCISE</span></header>
+  <h2 class="big-h">Sixteen checks. Six open claims. Zero builds.</h2>
+  <div class="ev">
+    <div class="ev-big"><span>4</span><p>agent changes<br>with a dossier</p></div>
+    <div class="ev-big"><span>273</span><p>files covered<br>by the four</p></div>
+    <div class="ev-big"><span>6</span><p>pairwise merge<br>dry-runs</p></div>
+    <div class="ev-big"><span>368<span class="slash">/368</span></p><p>attribute emissions<br>correctly guarded</p></div>
+  </div>
+  <div class="ev2">
+    <div class="ev-quote">The last row is the honest one: no build was verified.</div>
+    <div class="ev-row"><b>16/16</b><span>executed behavioural checks on the shipped build</span></div>
+    <div class="ev-row red"><b>0</b><span>builds verified · printed on every receipt</span></div>
+  </div>
+  <div class="claimbar">
+    <div style="flex:6"><b>6</b><span>supported by literature</span></div>
+    <div style="flex:6"><b>6</b><span>validated by executed test</span></div>
+    <div style="flex:2"><b>2</b><span>partially supported</span></div>
+    <div style="flex:6" class="open"><b>6</b><span>open by design</span></div>
+  </div>
+  <p class="claimnote">Twenty claims in the register. No claim without a source, a check or a label.</p>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>07 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 08 ------------------------------------------------------------ collision -->
+<section class="slide" data-n="08">
+  <header class="slide-head"><span>07 · THE FINDING</span><span>MERGE-TREE EXITS 0</span></header>
+  <h2 class="big-h">Two branches, opposite directions,<br>no conflict.</h2>
+  <div class="coll">
+    <div class="coll-a">
+      <div class="coll-k">#2283</div>
+      <p>Wraps every diagnostic in a source-location filter.</p>
+      <div class="coll-code">reportDiagnostic = d =&gt;<br>&nbsp;&nbsp;ReportIfLocatedInCompilation(d)</div>
+    </div>
+    <div class="coll-x">×</div>
+    <div class="coll-b">
+      <div class="coll-k">#2234</div>
+      <p>Skips members, and relies on the same diagnostic to justify the skip.</p>
+      <div class="coll-code">if (!intMembers.ContainsKey(key))<br>&nbsp;&nbsp;intMembers.Add(key, …) &nbsp;// silent</div>
+    </div>
+  </div>
+  <div class="coll-out">
+    <b>Merged, the skip survives and the explanation disappears.</b>
+    <span>No per-pull-request review can see this. Each dossier was verified against the base commit, not against the
+      other three branches in flight.</span>
+  </div>
+  <div class="mm">
+    <div class="mm-cell"><span>#2283 × #2234</span><b class="c">CLEAN</b><em>contradictory intent</em></div>
+    <div class="mm-cell"><span>#2129 × #2297</span><b class="x">CONFLICT</b><em>5 files</em></div>
+    <div class="mm-cell"><span>#2283 × #2129</span><b class="x">CONFLICT</b><em>README only</em></div>
+    <div class="mm-cell"><span>#2283 × #2297</span><b class="x">CONFLICT</b><em>README only</em></div>
+    <div class="mm-cell"><span>#2234 × #2129</span><b class="c">CLEAN</b><em>no overlapping hunks</em></div>
+    <div class="mm-cell"><span>#2234 × #2297</span><b class="c">CLEAN</b><em>no overlapping hunks</em></div>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>08 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 09 -------------------------------------------------------------- receipt -->
+<section class="slide" data-n="09">
+  <header class="slide-head"><span>08 · THE RECEIPT</span><span>WHAT A HUMAN SIGNS</span></header>
+  <div class="rec-grid">
+    <div>
+      <h2 class="big-h">Not a summary.<br>An attestation.</h2>
+      <p class="rec-lede">Four blocks, one hash, one name. The receipt is only valid for the dossier it was shown.</p>
+      <div class="rec-hash">dossier hash <b>0013a62b</b><br>4 files · 5 claims · 2 findings · 2 refusals</div>
+    </div>
+    <div class="rec-blocks">
+      <div><span>01</span><b>Checked, and by what</b><p>Each supported claim with its source: a re-runnable check, a
+        file:line, an invariant.</p></div>
+      <div><span>02</span><b>Not checked, and why</b><p>Build, test suite, round-trip behaviour. Reason stated on the
+        artefact being signed.</p></div>
+      <div><span>03</span><b>Reported, owner decides</b><p>Findings stay findings. The product question is escalated,
+        not answered.</p></div>
+      <div class="red"><span>04</span><b>Residual risk accepted</b><p>Unverified claims and behaviour under the other
+        open branches.</p></div>
+    </div>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>09 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 10 ----------------------------------------------------------- signature gate -->
+<section class="slide" data-n="10">
+  <header class="slide-head"><span>09 · THE GATE</span><span>IMPLEMENTED, NOT DESCRIBED</span></header>
+  <h2 class="big-h">The signature is blocked<br>until the findings are read.</h2>
+  <div class="gate">
+    <div class="gate-card off">
+      <div class="gate-top"><span>DRAFT</span><span>1 OF 2 ACKNOWLEDGED</span></div>
+      <div class="gate-body">
+        <div class="chk">The filter is global, not scoped to the crashing path</div>
+        <div class="chk on">No test asserts the suppression itself</div>
+        <div class="gate-input">Your name — the person accountable</div>
+        <button class="gate-btn" disabled>Sign the receipt</button>
+        <p>Unacknowledged findings block the signature.</p>
+      </div>
+    </div>
+    <div class="gate-arrow">→</div>
+    <div class="gate-card on">
+      <div class="gate-top"><span>SIGNED</span><span>2 OF 2 · 08:41</span></div>
+      <div class="gate-body">
+        <div class="chk on">The filter is global, not scoped to the crashing path</div>
+        <div class="chk on">No test asserts the suppression itself</div>
+        <div class="gate-sig">A. Kaissi</div>
+        <div class="gate-stamp">RECEIPTED<br>0013a62b</div>
+        <p>Signature binds to the dossier hash. Time-to-sign is recorded.</p>
+      </div>
+    </div>
+  </div>
+  <p class="gate-note">Bulk acknowledgement under ten seconds is logged as a no-look signature and enters the
+    spot-check queue. Measured, not merely discouraged.</p>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>10 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 11 --------------------------------------------------------------- ledger -->
+<section class="slide" data-n="11">
+  <header class="slide-head"><span>10 · MEASUREMENT</span><span>TARGETS ARE LABELLED</span></header>
+  <h2 class="big-h">One primary metric.<br>Seven guardrails.</h2>
+  <div class="led">
+    <div class="led-primary">
+      <div class="k">PRIMARY</div>
+      <h3>Escape rate</h3>
+      <p>Reverts within 14 days plus linked incidents, per 100 merged changes. Flat or falling while review time falls.
+        If it rises, that area drops back to Class A automatically.</p>
+      <div class="led-target">TARGET · FLAT VS BASELINE</div>
+    </div>
+    <div class="led-list">
+      <div class="led-row"><span>Median human minutes</span><i style="width:40%"></i><b>−40%</b></div>
+      <div class="led-row"><span>Attested without full read</span><i style="width:60%"></i><b>60%</b></div>
+      <div class="led-row"><span>Claim contradiction</span><i style="width:5%"></i><b>&lt;5%</b></div>
+      <div class="led-row"><span>Refusal rate</span><i style="width:11%"></i><b>8–15%</b></div>
+      <div class="led-row"><span>No-look signatures</span><i style="width:2%"></i><b>&lt;2%</b></div>
+      <div class="led-row"><span>Finding precision</span><i style="width:70%"></i><b>&gt;70%</b></div>
+      <div class="led-row"><span>Spot-check miss rate</span><i style="width:10%"></i><b>&lt;10%</b></div>
+    </div>
+  </div>
+  <p class="led-note">Every row is labelled TARGET, MEASURED or ASSUMPTION. A ledger that only counts what the tool
+    saw is listed among the reasons to distrust the system.</p>
+  <div class="prov">
+    <div><span class="tag t">TARGET</span><p>What we commit to measure. No baseline exists in this environment.</p></div>
+    <div><span class="tag m">MEASURED</span><p>Produced by this exercise, from the real diffs. Reproducible.</p></div>
+    <div><span class="tag a">ASSUMPTION</span><p>Stated as an assumption, priced as one, never rounded up.</p></div>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>11 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 12 ------------------------------------------------------------- SAR console -->
+<section class="slide s-dark" data-n="12">
+  <header class="slide-head light"><span>11 · OPERATIONS</span><span>THE SAME RULE, A DIFFERENT SHIFT</span></header>
+  <div class="sar">
+    <div class="sar-copy">
+      <h2 class="big-h light">The assistant<br>cannot dispatch.</h2>
+      <ul>
+        <li><b>Recommend</b> — evidence, confidence, and the option to refuse.</li>
+        <li><b>Decide</b> — a duty officer validates, or tasks another asset and records why.</li>
+        <li><b>Record</b> — every recommendation and every decision in one ledger.</li>
+      </ul>
+      <div class="sar-quote">A tasking sends people into a forest at night. If the system cannot say why, the decision
+        belongs to a person — and the record has to show that it did.</div>
+    </div>
+    <figure class="sar-fig">
+      <img src="../assets/shots/sar-command.jpg" alt="SAR console command view">
+      <figcaption>SYNTHETIC EXERCISE · 16 TEAMS · 12 OPEN INCIDENTS</figcaption>
+    </figure>
+  </div>
+  <div class="sar-stats">
+    <div><b>12</b><span>open incidents</span></div>
+    <div><b>16</b><span>teams on the board</span></div>
+    <div><b>1</b><span>officer who decides</span></div>
+    <div><b>0</b><span>dispatches without a human</span></div>
+  </div>
+  <div class="slide-foot dark"><span>REVIEW RECEIPT</span><span>12 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 13 --------------------------------------------------------------- pattern -->
+<section class="slide" data-n="13">
+  <header class="slide-head"><span>12 · THE PATTERN</span><span>CLAIM · EVIDENCE · REFUSAL · SIGNATURE</span></header>
+  <h2 class="big-h">The domain changes.<br>The accountability does not.</h2>
+  <table class="pat">
+    <thead><tr><th></th><th>Code review</th><th>Search and rescue</th></tr></thead>
+    <tbody>
+      <tr><td>Evidence</td><td>Every claim carries a check or a file:line</td><td>Every recommendation carries its evidence lines</td></tr>
+      <tr><td>Refusal</td><td>Product decisions escalated, decider named</td><td>No suitable asset in range: declines to recommend</td></tr>
+      <tr><td>Signature</td><td>Receipt bound to the dossier hash</td><td>Tasking requires an officer action</td></tr>
+      <tr><td>Feedback</td><td>Trust per area moves routing</td><td>Validations and overrides reviewed after the exercise</td></tr>
+    </tbody>
+  </table>
+  <div class="pat-note">Both artefacts are in the package and run with the network off.</div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>13 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 14 -------------------------------------------------------------- business -->
+<section class="slide" data-n="14">
+  <header class="slide-head"><span>13 · BUSINESS</span><span>WHY THE SECOND CUSTOMER IS EASIER</span></header>
+  <h2 class="big-h">Compliance is moving<br>from documents to evidence.</h2>
+  <div class="biz">
+    <div class="biz-step"><div class="biz-dot">1</div><h4>Reference deployment</h4><p>A national SAR platform, three months. Publish the baseline escape rate before and after.</p></div>
+    <div class="biz-step"><div class="biz-dot">2</div><h4>Two paid pilots</h4><p>Public-sector integrators, six months. The measurement is the product; the pilot buys the measurement.</p></div>
+    <div class="biz-step"><div class="biz-dot">3</div><h4>Audit-export partnership</h4><p>A notified body accepts the receipt as review evidence. That is the gate to regulated buyers.</p></div>
+  </div>
+  <div class="biz-row">
+    <div><span>BUYER</span><p>The person who signs the audit response, not developer tooling.</p></div>
+    <div><span>MODEL</span><p>Platform fee, metered attested changes, audit export. On-premise for classified work.</p></div>
+    <div><span>MOAT</span><p>The outcome ledger per area. The format copies in a week; a trust history does not.</p></div>
+  </div>
+  <div class="slide-foot"><span>REVIEW RECEIPT</span><span>14 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 15 ---------------------------------------------------------------- limits -->
+<section class="slide s-dark" data-n="15">
+  <header class="slide-head light"><span>14 · LIMITS</span><span>NAMED BEFORE A JUDGE NAMES THEM</span></header>
+  <h2 class="big-h light">What we do not claim.</h2>
+  <div class="limits-mark"><span></span><i></i></div>
+  <ul class="limits">
+    <li><span>×</span>No production deployment</li>
+    <li><span>×</span>No measured productivity gain</li>
+    <li><span>×</span>No incident data</li>
+    <li><span>×</span>No validated classifier</li>
+    <li><span>×</span>No build or test execution — no .NET SDK</li>
+    <li><span>×</span>No claim that the code is correct</li>
+  </ul>
+  <div class="limits-foot">Four changes, one repository, one week. Sixteen checks prove the behaviour matches the
+    description; six open claims are the hypotheses the studies exist to test.</div>
+  <div class="slide-foot dark"><span>REVIEW RECEIPT</span><span>15 / 16</span><span>SUPPORTED BY AJELIX</span></div>
+</section>
+
+<!-- 16 ---------------------------------------------------------------- close -->
+<section class="slide s-cover s-close" data-n="16">
+  <div class="close-circle"></div>
+  <div class="close-grid"></div>
+  <div class="close-copy">
+    <div class="kicker light">THE SENTENCE THAT CARRIES IT</div>
+    <h2>The receipt is<br>the unit of trust.</h2>
+    <p>Not the pull request, not the model's confidence, not the green tick.<br>A named person, a written record of
+      what was and was not checked,<br>and a history that changes how much the next change is trusted.</p>
+  </div>
+  <div class="close-team">
+    <img src="../assets/brand/emblem-seal.png" alt="">
+    <div>
+      <b>LATVIAN GHOSTBUSTERS</b>
+      <span>Abderrahman Kaissi · Athena Su Dimou</span>
+      <span>LATVIAN GHOSTBUSTERS · JUNCTION 2026</span>
+    </div>
+    <div class="close-ajelix">
+      <span>SUPPORTED BY</span>
+      <img src="../assets/brand/ajelix-lockup-white.png" alt="Ajelix">
+    </div>
+  </div>
+  <div class="slide-foot dark"><span>REVIEW RECEIPT</span><span>16 / 16</span><span>JUNCTION 2026 · TIETO</span></div>
+</section>
+
+</div>
+
+<div class="hud" id="hud">
+  <button id="prev" aria-label="Previous slide">←</button>
+  <span id="counter">01 / 16</span>
+  <button id="next" aria-label="Next slide">→</button>
+  <button id="full" title="Fullscreen (F)">⛶</button>
+</div>
+<div class="progress"><i id="bar"></i></div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = 0;
+  const counter = document.getElementById('counter');
+  const bar = document.getElementById('bar');
+
+  function fit() {
+    if (window.matchMedia('print').matches) return;
+    const s = Math.min(window.innerWidth / 1600, window.innerHeight / 900);
+    document.documentElement.style.setProperty('--scale', s);
+  }
+  function show(n, push = true) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('on', k === i));
+    document.getElementById('deck').style.transform = `translateY(${-i * 900}px)`;
+    counter.textContent = String(i + 1).padStart(2, '0') + ' / 16';
+    bar.style.width = ((i + 1) / slides.length * 100) + '%';
+    if (push) history.replaceState(null, '', '#' + (i + 1));
+  }
+  document.getElementById('next').onclick = () => show(i + 1);
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('full').onclick = () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen();
+  };
+  addEventListener('resize', fit);
+  addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+    if (e.key.toLowerCase() === 'f') document.getElementById('full').click();
+    if (e.key.toLowerCase() === 'p') { e.preventDefault(); window.print(); }
+  });
+  addEventListener('hashchange', () => show(parseInt(location.hash.slice(1)) - 1 || 0, false));
+  // presentation chrome hides itself; move the mouse to bring it back
+  const hud = document.getElementById('hud');
+  let hideTimer;
+  function poke(){ hud.classList.add('show'); clearTimeout(hideTimer); hideTimer = setTimeout(() => hud.classList.remove('show'), 2200); }
+  addEventListener('mousemove', poke); poke();
+  fit();
+  show(parseInt(location.hash.slice(1)) - 1 || 0, false);
+</script>
+</body>
+</html>

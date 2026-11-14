@@ -1,0 +1,215 @@
+{
+  "generated": "2026-11-14T12:44:03.876Z",
+  "runtime": "node v20.20.2",
+  "harness": "tools/run_tests.js",
+  "runs": [
+    {
+      "id": "A/A",
+      "suite": "TESTS-A",
+      "suiteAuthor": "builder-01",
+      "build": "A",
+      "passed": 4,
+      "total": 4,
+      "cases": [
+        {
+          "id": "A1",
+          "claim": "A 503 is retried and the next 200 is returned",
+          "status": "pass",
+          "detail": "",
+          "ms": 1.05
+        },
+        {
+          "id": "A2",
+          "claim": "Gives up after three attempts with RetryExhausted",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.47
+        },
+        {
+          "id": "A3",
+          "claim": "Full jitter never exceeds min(cap, base * 2^n)",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.18
+        },
+        {
+          "id": "A4",
+          "claim": "A Retry-After hint longer than the jitter is honoured",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.3
+        }
+      ]
+    },
+    {
+      "id": "A/B",
+      "suite": "TESTS-A",
+      "suiteAuthor": "builder-01",
+      "build": "B",
+      "passed": 4,
+      "total": 4,
+      "cases": [
+        {
+          "id": "A1",
+          "claim": "A 503 is retried and the next 200 is returned",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.22
+        },
+        {
+          "id": "A2",
+          "claim": "Gives up after three attempts with RetryExhausted",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.09
+        },
+        {
+          "id": "A3",
+          "claim": "Full jitter never exceeds min(cap, base * 2^n)",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.06
+        },
+        {
+          "id": "A4",
+          "claim": "A Retry-After hint longer than the jitter is honoured",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.02
+        }
+      ]
+    },
+    {
+      "id": "B/A",
+      "suite": "TESTS-B",
+      "suiteAuthor": "reviewer-02",
+      "build": "A",
+      "passed": 5,
+      "total": 8,
+      "cases": [
+        {
+          "id": "B1",
+          "claim": "A 503 is retried and the next 200 is returned",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.12
+        },
+        {
+          "id": "B2",
+          "claim": "Gives up after three attempts with RetryExhausted",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.13
+        },
+        {
+          "id": "B3",
+          "claim": "Full jitter never exceeds min(cap, base * 2^n)",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.24
+        },
+        {
+          "id": "B4",
+          "claim": "A 5 s Retry-After is honoured over the jitter",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.43
+        },
+        {
+          "id": "B5",
+          "claim": "Retry-After of 30 s is honoured in full (SPEC §4 ceiling)",
+          "status": "fail",
+          "detail": "waited 30 s, not a truncated hint: expected 30000, got 8000",
+          "ms": 0.17
+        },
+        {
+          "id": "B6",
+          "claim": "A POST without a caller-supplied key is refused, not retried",
+          "status": "fail",
+          "detail": "throws before the first attempt: expected truthy, got null · error type: expected \"NonIdempotentRequest\", got null · no request was made: expected 0, got 1",
+          "ms": 0.13
+        },
+        {
+          "id": "B7",
+          "claim": "The caller’s idempotency key is reused on every attempt",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.13
+        },
+        {
+          "id": "B8",
+          "claim": "504 is retried (spec silent — recorded as a divergence)",
+          "status": "fail",
+          "detail": "gateway timeout retried: expected 200, got 504",
+          "ms": 0.09
+        }
+      ]
+    },
+    {
+      "id": "B/B",
+      "suite": "TESTS-B",
+      "suiteAuthor": "reviewer-02",
+      "build": "B",
+      "passed": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "B1",
+          "claim": "A 503 is retried and the next 200 is returned",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.03
+        },
+        {
+          "id": "B2",
+          "claim": "Gives up after three attempts with RetryExhausted",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.05
+        },
+        {
+          "id": "B3",
+          "claim": "Full jitter never exceeds min(cap, base * 2^n)",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.03
+        },
+        {
+          "id": "B4",
+          "claim": "A 5 s Retry-After is honoured over the jitter",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.2
+        },
+        {
+          "id": "B5",
+          "claim": "Retry-After of 30 s is honoured in full (SPEC §4 ceiling)",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.03
+        },
+        {
+          "id": "B6",
+          "claim": "A POST without a caller-supplied key is refused, not retried",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.4
+        },
+        {
+          "id": "B7",
+          "claim": "The caller’s idempotency key is reused on every attempt",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.03
+        },
+        {
+          "id": "B8",
+          "claim": "504 is retried (spec silent — recorded as a divergence)",
+          "status": "pass",
+          "detail": "",
+          "ms": 0.01
+        }
+      ]
+    }
+  ]
+}

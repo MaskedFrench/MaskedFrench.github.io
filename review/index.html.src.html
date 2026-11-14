@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Review Receipt — evidence, refusals, a signature</title>
+<meta name="description" content="Review Receipt: a reference implementation for reviewing agent-written code. Every merge carries a receipt.">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/system.css">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body class="app">
+
+<div class="topbar">
+  <span class="red">Reference implementation</span>
+  <span class="sep"></span>
+  <span class="hide-sm">Junction 2026 · Tieto · Earned trust in AI code</span>
+  <span class="sep hide-sm"></span>
+  <span class="grow"></span>
+  <span class="off"><i></i>Offline · no network</span>
+  <span class="sep"></span>
+  <span id="buildstamp">BUILD 2026-11-13</span>
+</div>
+
+<header class="masthead">
+  <a class="brandline" href="../index.html" title="Back to the package">
+    <img class="seal" src="../assets/brand/emblem-seal.png" alt="Latvian Ghostbusters">
+    <span class="txt">
+      <span class="kicker">Review Receipt</span>
+      <span class="name">Assurance console</span>
+      <span class="sub">Every merge carries a receipt · v1.0</span>
+    </span>
+  </a>
+  <div class="masthead-rule"></div>
+  <div class="repo">
+    <span class="label">Repository</span>
+    <b>te-industry-tech-office/junction26-messagepack-csharp</b>
+    <span class="mono dim">base 32258fdb · 4 agent branches · 1 week</span>
+  </div>
+  <div class="mastright">
+    <span class="tag teal">build not verified</span>
+    <span class="supp">
+      <span class="k">Supported by</span>
+      <img src="../assets/brand/ajelix-lockup-ink.png" alt="Ajelix">
+    </span>
+  </div>
+</header>
+
+<nav class="nav" id="nav" aria-label="Sections">
+  <button data-view="dossier" class="on">01 · Dossiers <span class="kbd">1</span></button>
+  <button data-view="receipt">02 · Receipt <span class="kbd">2</span></button>
+  <button data-view="merge">03 · Merge set <span class="kbd">3</span></button>
+  <button data-view="ledger">04 · Ledger <span class="kbd">4</span></button>
+  <button data-view="failures">05 · Failure modes <span class="kbd">5</span></button>
+  <button data-view="concept">06 · Concept <span class="kbd">6</span></button>
+  <span class="navspacer"></span>
+  <button class="navghost" id="printBtn" title="Print the current view">Print <span class="kbd">P</span></button>
+</nav>
+
+<div class="shell">
+  <aside class="rail" id="rail" aria-label="Agent changes"></aside>
+  <main id="main" tabindex="-1"></main>
+</div>
+
+<footer class="foot">
+  <div class="in">
+    <img src="../assets/brand/emblem-seal-300.png" alt="" width="26" height="26" style="opacity:.9">
+    <span><b>Reference implementation, not a product.</b> Build and test suite were not executed in this environment; every receipt says so.</span>
+    <span class="r" id="footstats"></span>
+    <span class="sp"><span class="k">Supported by</span><img src="../assets/brand/ajelix-lockup-white.png" alt="Ajelix"></span>
+  </div>
+</footer>
+
+<script src="./data.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

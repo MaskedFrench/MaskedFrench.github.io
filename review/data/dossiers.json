@@ -1,0 +1,818 @@
+{
+ "meta": {
+  "concept": "Review Receipt",
+  "repo": "te-industry-tech-office/junction26-messagepack-csharp",
+  "base": "32258fdb",
+  "built": "2026-11-13",
+  "challenge": "Earned Trust in AI Code, Tieto, Junction 2026"
+ },
+ "changes": [
+  {
+   "id": "2283",
+   "branch": "ju26-issue-2283",
+   "req": "REQ-MP-2283",
+   "req_statement": "A closed generic struct declared in a referenced assembly must not crash the generator or the analyzer. Diagnostics must only be reported against source locations inside the compilation being analysed.",
+   "issue_title": "Generator and analyzer crash with IndexOutOfRangeException on a closed generic struct from a referenced assembly",
+   "issue_url": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/issues/2283",
+   "diff": {
+    "files": 4,
+    "additions": 225,
+    "deletions": 3,
+    "src": 1,
+    "tests": 1,
+    "docs": 1,
+    "golden": 0,
+    "readme": 1,
+    "tt_pairs": 0
+   },
+   "blast": {
+    "class": "A",
+    "label": "Attention path",
+    "drivers": [
+     "Changes which diagnostics users see (errors can be suppressed)",
+     "Analyzer public behaviour, every consumer affected",
+     "No runtime library code touched"
+    ],
+    "why": "Four files, 225 lines. Diff size says routine. What it changes is the diagnostic surface of a shipping analyzer, so an error that used to appear in a developer's IDE can now be dropped. That is the failure mode nobody notices until a bug ships."
+   },
+   "claims": [
+    {
+     "id": "C1",
+     "text": "Root cause is indexing an empty DeclaringSyntaxReferences array for symbols from metadata.",
+     "kind": "diff + code read",
+     "evidence": "TypeCollector.cs:1077 old `[0]` replaced by `FirstOrDefault()?.GetSyntax()`; same pattern added at :982 via GetPropertyIdentifierLocation()",
+     "verdict": "supported",
+     "confidence": 0.95
+    },
+    {
+     "id": "C2",
+     "text": "All diagnostics are now filtered to source locations inside the analysed compilation.",
+     "kind": "code read",
+     "evidence": "New ReportIfLocatedInCompilation(), assigned in the constructor at TypeCollector.cs:239, wrapping the reportDiagnostic delegate",
+     "verdict": "supported",
+     "confidence": 0.92
+    },
+    {
+     "id": "C3",
+     "text": "The regression is covered by a new test.",
+     "kind": "file shape",
+     "evidence": "tests/.../GenericsFormatterTests.cs +189 lines, 9 new [Fact] methods",
+     "verdict": "partially supported",
+     "confidence": 0.55
+    },
+    {
+     "id": "C4",
+     "text": "The new test fails on the parent commit and passes on this branch.",
+     "kind": "requires execution",
+     "evidence": "No .NET SDK in the review environment. Not executed.",
+     "verdict": "unverified",
+     "confidence": null
+    },
+    {
+     "id": "C5",
+     "text": "Build and full suite are green.",
+     "kind": "requires execution",
+     "evidence": "CI result not supplied with the change. Not executed.",
+     "verdict": "unverified",
+     "confidence": null
+    }
+   ],
+   "findings": [
+    {
+     "id": "F1",
+     "sev": "medium",
+     "title": "The filter is global, not scoped to the crashing path",
+     "detail": "The new delegate is installed in the constructor, so every diagnostic this collector raises passes through ReportIfLocatedInCompilation. Anything originating from a metadata symbol, or from a syntax tree outside the compilation, is now dropped instead of reported.",
+     "evidence": "TypeCollector.cs:239 and :1429-1443",
+     "action": "Owner confirms whether silencing metadata-origin diagnostics is intended product behaviour or collateral of the crash fix."
+    },
+    {
+     "id": "F2",
+     "sev": "low",
+     "title": "No test asserts the suppression itself",
+     "detail": "Tests exercise the no-crash path. None assert that a diagnostic pointed outside the compilation is deliberately dropped, so the new behaviour is unpinned and easy to regress.",
+     "evidence": "GenericsFormatterTests.cs added assertions; no negative-location case",
+     "action": "Add one test that pins the drop, or delete the filter."
+    }
+   ],
+   "refusals": [
+    {
+     "q": "Is dropping metadata-origin diagnostics acceptable?",
+     "why": "This is a product decision about what the analyzer promises its users. Evidence can show the behaviour; it cannot decide whether the behaviour is wanted.",
+     "decider": "MessagePack.SourceGenerator maintainer"
+    },
+    {
+     "q": "Does the new test genuinely reproduce the crash before the fix?",
+     "why": "Answering needs the parent commit built and run. Not possible in this environment, so the claim stays unverified rather than assumed.",
+     "decider": "CI owner"
+    }
+   ],
+   "not_checked": [
+    "Build",
+    "Full test suite",
+    "Behaviour against a real referenced-assembly project",
+    "Performance of the added delegate hop"
+   ],
+   "estimate": {
+    "full_read_min": 22,
+    "dossier_min": 4,
+    "basis": "ESTIMATE: 228 changed lines at 40 lines/min for a full read vs claim and hunk verification. Not measured."
+   }
+  },
+  {
+   "id": "2234",
+   "branch": "ju26-issue-2234",
+   "req": "REQ-MP-2234",
+   "req_statement": "With SuppressSourceGeneration = true the analyzer must still run and must not throw when members collide. Diagnostic-first: a member that cannot be modelled is reported, then skipped.",
+   "issue_title": "The analyzer does not work if SuppressSourceGeneration = true",
+   "issue_url": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/issues/2234",
+   "diff": {
+    "files": 4,
+    "additions": 262,
+    "deletions": 4,
+    "src": 1,
+    "tests": 2,
+    "docs": 0,
+    "golden": 0,
+    "readme": 1,
+    "tt_pairs": 0
+   },
+   "blast": {
+    "class": "A",
+    "label": "Attention path",
+    "drivers": [
+     "Changes member collection, which decides what is serialised",
+     "Same file and method as the #2283 change",
+     "Silent-drop paths when no diagnostic sink is supplied"
+    ],
+    "why": "Also four files. But this one decides which members end up in a formatter. A member dropped here is a field that silently does not round-trip, which is a data-loss class of bug."
+   },
+   "claims": [
+    {
+     "id": "C1",
+     "text": "Duplicate keys no longer throw from Dictionary.Add.",
+     "kind": "code read",
+     "evidence": "Guards at TypeCollector.cs:1023, :1039, :1163, :1179 (`if (!intMembers.ContainsKey(...))`)",
+     "verdict": "supported",
+     "confidence": 0.95
+    },
+    {
+     "id": "C2",
+     "text": "A member is skipped only after its diagnostic is reported.",
+     "kind": "code read",
+     "evidence": "reportDiagnostic at :1007 / :1147 precedes `continue` at :1008 / :1148; KeysMustBeUnique raised at :1016 / :1032 before each guard",
+     "verdict": "supported",
+     "confidence": 0.88
+    },
+    {
+     "id": "C3",
+     "text": "No member is ever dropped without a signal.",
+     "kind": "control flow",
+     "evidence": "The guards are unconditional, but the diagnostics that justify them go through reportDiagnostic, which is null when the caller suppresses analysis. In that path the member is dropped silently.",
+     "verdict": "inconclusive",
+     "confidence": 0.6
+    },
+    {
+     "id": "C4",
+     "text": "Two new test files cover the suppressed-generation case.",
+     "kind": "file shape",
+     "evidence": "SuppressedSourceGenerationTests.cs (37 lines), SuppressSourceGenerationAnalyzerTests.cs (193 lines)",
+     "verdict": "partially supported",
+     "confidence": 0.55
+    },
+    {
+     "id": "C5",
+     "text": "Tests pass.",
+     "kind": "requires execution",
+     "evidence": "Not executed. No SDK in the review environment.",
+     "verdict": "unverified",
+     "confidence": null
+    }
+   ],
+   "findings": [
+    {
+     "id": "F1",
+     "sev": "high",
+     "title": "Silent member drop in exactly the path the issue is about",
+     "detail": "When reportDiagnostic is null, the guards skip the member with no diagnostic and no log. The issue being fixed is about SuppressSourceGeneration, so the null-sink path is the one under load, not an edge case.",
+     "evidence": "TypeCollector.cs:1023 and :1014 together: reportDiagnostic?.Invoke(...) is null-conditional, the ContainsKey guard is not",
+     "action": "Owner decides: accept silent skip, or record skipped members on the model so the callers can surface them."
+    },
+    {
+     "id": "F2",
+     "sev": "high",
+     "title": "Merges cleanly with the #2283 branch, semantics do not",
+     "detail": "#2283 replaces reportDiagnostic with a source-location filter. This change relies on those same diagnostics to justify skipping members. Merged together, the justification can be swallowed while the skip still happens. Git reports no conflict.",
+     "evidence": "git merge-tree origin/ju26-issue-2283 origin/ju26-issue-2234 exits 0 with no conflicts; both hunks are in TypeCollector.cs",
+     "action": "Joint test required before either merges: duplicate key under suppression, assert member skipped AND diagnostic emitted."
+    }
+   ],
+   "refusals": [
+    {
+     "q": "Is a silent skip acceptable when the caller suppresses diagnostics?",
+     "why": "Requires product intent for the suppressed mode. Evidence shows the behaviour exists; whether it is tolerable belongs to the maintainer.",
+     "decider": "MessagePack.SourceGenerator maintainer"
+    },
+    {
+     "q": "Which duplicate member wins, first or derived?",
+     "why": "The guards keep the first insertion. Whether that is the right precedence is a serialisation contract decision, not something code shape can settle.",
+     "decider": "Maintainer, serialisation contract"
+    }
+   ],
+   "not_checked": [
+    "Build",
+    "Full test suite",
+    "Round-trip behaviour of a type with colliding keys",
+    "Interaction with #2283 merged"
+   ],
+   "estimate": {
+    "full_read_min": 26,
+    "dossier_min": 5,
+    "basis": "ESTIMATE: 266 changed lines at 40 lines/min. Not measured."
+   }
+  },
+  {
+   "id": "2129",
+   "branch": "ju26-issue-2129",
+   "req": "REQ-MP-2129",
+   "req_statement": "Allow a formatter to be generated for a type declared in a referenced assembly, with the new diagnostics registered, documented and released.",
+   "issue_title": "Feature Request: Allow generation of Formatter for a type in a referenced assembly",
+   "issue_url": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/issues/2129",
+   "diff": {
+    "files": 28,
+    "additions": 1034,
+    "deletions": 9,
+    "src": 13,
+    "tests": 9,
+    "docs": 5,
+    "golden": 0,
+    "readme": 1,
+    "tt_pairs": 2
+   },
+   "blast": {
+    "class": "A",
+    "label": "Attention path",
+    "drivers": [
+     "Adds public API in MessagePack.Annotations",
+     "Four new diagnostic IDs",
+     "Generator output changes for existing users"
+    ],
+    "why": "Twenty-eight files, thirteen of them source. A feature that adds public attributes is a contract with every downstream package, and the new diagnostic IDs become part of the analyzer's published surface."
+   },
+   "claims": [
+    {
+     "id": "C1",
+     "text": "New attributes are additive public API only.",
+     "kind": "diff shape",
+     "evidence": "src/MessagePack.Annotations/Attributes.cs +36/-0; existing members untouched",
+     "verdict": "supported",
+     "confidence": 0.9
+    },
+    {
+     "id": "C2",
+     "text": "All four new diagnostic IDs are registered, documented and release-tracked.",
+     "kind": "cross-artifact check (run)",
+     "evidence": "MsgPack019-022: each found in analyzer source (1 file), doc/analyzers/<id>.md (present), AnalyzerReleases.Unshipped.md (1 row each)",
+     "verdict": "supported",
+     "confidence": 0.98
+    },
+    {
+     "id": "C3",
+     "text": "Implementation spans collector, generator and both template variants.",
+     "kind": "diff shape",
+     "evidence": "New GeneratedFormatterCollector.cs (+300), GeneratedFormatterRequest.cs; FormatterTemplate.tt/.cs and StringKey variant both updated",
+     "verdict": "supported",
+     "confidence": 0.92
+    },
+    {
+     "id": "C4",
+     "text": "Existing generated output is unchanged for types that do not use the feature.",
+     "kind": "requires execution",
+     "evidence": "No golden-file baseline diff provided for pre-existing scenarios. Not executed.",
+     "verdict": "unverified",
+     "confidence": null
+    }
+   ],
+   "findings": [
+    {
+     "id": "F1",
+     "sev": "medium",
+     "title": "Public annotation API added without an API-surface review signal",
+     "detail": "MessagePack.Annotations is consumed as a package. New public attributes are a semver-visible change and the dossier carries no approval from the maintainer who owns that package.",
+     "evidence": "Attributes.cs +36 lines; no API baselines file touched",
+     "action": "Named API owner approves the surface before merge."
+    },
+    {
+     "id": "F2",
+     "sev": "info",
+     "title": "Documentation lifecycle complete for all four IDs",
+     "detail": "This is a pass, recorded because a review that only lists problems trains people to ignore it. Four IDs, four doc pages, four release rows, checked by command rather than by eye.",
+     "evidence": "check: MsgPack019..022 -> code 1 / doc 1 / release 1 each",
+     "action": "None."
+    }
+   ],
+   "refusals": [
+    {
+     "q": "Do the new attribute names match the maintainers' naming policy?",
+     "why": "A convention question held by people, not derivable from the diff.",
+     "decider": "MessagePack.Annotations owner"
+    },
+    {
+     "q": "Is the netstandard target surface sufficient for the new attributes?",
+     "why": "Needs a build against each target framework. Not executed.",
+     "decider": "CI owner"
+    }
+   ],
+   "not_checked": [
+    "Build per target framework",
+    "Golden-file equivalence for pre-existing scenarios",
+    "Package-level API compatibility"
+   ],
+   "estimate": {
+    "full_read_min": 52,
+    "dossier_min": 7,
+    "basis": "ESTIMATE: 1043 changed lines at 40 lines/min, reduced for 14 documentation and project files. Not measured."
+   }
+  },
+  {
+   "id": "2297",
+   "branch": "ju26-issue-2297",
+   "req": "REQ-MP-2297",
+   "req_statement": "Generated code carries [ExcludeFromCodeCoverage] so coverage tooling reports on hand-written code. No change to serialisation behaviour.",
+   "issue_title": "Add ExcludeFromCodeCoverage attribute to generated code.",
+   "issue_url": "https://github.com/MessagePack-CSharp/MessagePack-CSharp/issues/2297",
+   "diff": {
+    "files": 237,
+    "additions": 1383,
+    "deletions": 9,
+    "src": 13,
+    "tests": 1,
+    "docs": 0,
+    "golden": 222,
+    "readme": 1,
+    "tt_pairs": 6
+   },
+   "blast": {
+    "class": "B",
+    "label": "Bounded, machine-verifiable",
+    "drivers": [
+     "Generator output formatting, no serialisation semantics",
+     "222 of 237 files are regenerated golden files",
+     "Attribute is guarded for netstandard2.0 / netframework"
+    ],
+    "why": "The largest diff in the set and the least risky. Two hundred and thirty-seven files looks like a week of review. It is two source edits plus a mechanical regeneration, and the whole generated set can be proven with three invariants instead of read."
+   },
+   "claims": [
+    {
+     "id": "C1",
+     "text": "Every generated type carries the attribute, guarded for netstandard2.0 and netframework.",
+     "kind": "invariant check (run)",
+     "evidence": "368 attribute emissions across 222 golden files, 368 #if guards, 0 unguarded",
+     "verdict": "supported",
+     "confidence": 0.99
+    },
+    {
+     "id": "C2",
+     "text": "The 222 golden files change only by the attribute insertion.",
+     "kind": "invariant check (run)",
+     "evidence": "220 of 222 golden diffs are attribute-and-guard lines only; 2 also carry the brace-placement change from TransformUtilities.cs",
+     "verdict": "supported",
+     "confidence": 0.97
+    },
+    {
+     "id": "C3",
+     "text": "Templates and their pre-generated .cs counterparts were updated together.",
+     "kind": "file shape",
+     "evidence": "6 .tt and 6 .cs files modified in matching pairs",
+     "verdict": "partially supported",
+     "confidence": 0.6
+    },
+    {
+     "id": "C4",
+     "text": "No serialisation behaviour changes.",
+     "kind": "requires execution",
+     "evidence": "Brace-placement change in TransformUtilities.cs:58 alters emitted whitespace only, by inspection. No round-trip test executed.",
+     "verdict": "inconclusive",
+     "confidence": 0.7
+    }
+   ],
+   "findings": [
+    {
+     "id": "F1",
+     "sev": "medium",
+     "title": "One formatting change hides inside a 222-file regeneration",
+     "detail": "TransformUtilities.cs:58 changes `\"{\"` to `\"{\\r\\n\"` for the constrained-generics case, which is why two goldens are not attribute-only. Intentional or incident, it is invisible to anyone reading the diff by file count.",
+     "evidence": "TransformUtilities.cs:58; the 2 non-attribute-only goldens are GenericDataTypeWithPrivateMember variants",
+     "action": "Owner confirms the formatting change is intended; if not, it is a separate revert."
+    },
+    {
+     "id": "F2",
+     "sev": "low",
+     "title": "Template and pre-generated pairs can drift",
+     "detail": "Line counts differ between .tt and .cs (66 vs 60 added lines) because T4 directives do not emit. Parity cannot be asserted by counting, so it needs a regeneration check in CI.",
+     "evidence": "FormatterTemplate.tt +4 vs FormatterTemplate.cs +2; ResolverTemplate.tt +10 vs ResolverTemplate.cs +6",
+     "action": "Add a CI step that regenerates and fails on drift."
+    }
+   ],
+   "refusals": [
+    {
+     "q": "Is the constrained-generics brace formatting intended?",
+     "why": "A style decision by the maintainer. The evidence shows the change exists and what it touches; it cannot say whether the maintainer wanted it.",
+     "decider": "MessagePack.SourceGenerator maintainer"
+    },
+    {
+     "q": "Do the guards match the frameworks the package actually supports?",
+     "why": "Requires the package's target matrix and a build. Not executed.",
+     "decider": "CI owner"
+    }
+   ],
+   "not_checked": [
+    "Build",
+    "Round-trip serialisation tests",
+    "Coverage tooling behaviour on the generated output",
+    "T4 regeneration reproducibility"
+   ],
+   "estimate": {
+    "full_read_min": 35,
+    "dossier_min": 3,
+    "basis": "ESTIMATE: 237 files but 1107 of 1392 added lines are regenerated goldens; read cost treated as 13 source files. Not measured."
+   }
+  }
+ ],
+ "merge_set": {
+  "id": "merge-set",
+  "title": "The merge set: four agent branches, one week",
+  "lead": "No dossier sees another dossier. Individually all four changes are coherent. Together they hold one hard conflict and one silent semantic collision, and only the second one survives a green build.",
+  "matrix": [
+   {
+    "a": "2283",
+    "b": "2234",
+    "result": "clean",
+    "note": "Textually clean. Same file, same method, contradictory assumptions about diagnostic reporting. Silent collision."
+   },
+   {
+    "a": "2129",
+    "b": "2297",
+    "result": "conflict",
+    "note": "Five files conflict: README.md, FormatterTemplate, StringKeyFormatterTemplate, and both pre-generated .cs counterparts."
+   },
+   {
+    "a": "2283",
+    "b": "2129",
+    "result": "conflict",
+    "note": "README only. Mechanical resolution, but both add documentation sections."
+   },
+   {
+    "a": "2283",
+    "b": "2297",
+    "result": "conflict",
+    "note": "README only."
+   },
+   {
+    "a": "2234",
+    "b": "2129",
+    "result": "clean",
+    "note": "No overlapping hunks."
+   },
+   {
+    "a": "2234",
+    "b": "2297",
+    "result": "clean",
+    "note": "No overlapping hunks."
+   }
+  ],
+  "conflict_files": [
+   "README.md",
+   "src/MessagePack.SourceGenerator/Transforms/FormatterTemplate.cs",
+   "src/MessagePack.SourceGenerator/Transforms/FormatterTemplate.tt",
+   "src/MessagePack.SourceGenerator/Transforms/StringKey/StringKeyFormatterTemplate.cs",
+   "src/MessagePack.SourceGenerator/Transforms/StringKey/StringKeyFormatterTemplate.tt"
+  ],
+  "collision": {
+   "text": "Two branches changed the same method in opposite directions and git is happy.",
+   "detail": "#2283 wraps every diagnostic in a source-location filter. #2234 skips members and relies on the diagnostic in the same breath. Merged, the skip can survive and the explanation can disappear. Neither dossier can see this: each was reviewed against the base commit, not against the other branches in flight.",
+   "evidence": [
+    "git merge-tree origin/ju26-issue-2283 origin/ju26-issue-2234 → exit 0, no conflicts",
+    "TypeCollector.cs:239 (filter installed for all diagnostics)",
+    "TypeCollector.cs:1023 + :1014 (skip is unconditional, diagnostic is not)"
+   ],
+   "requirement": "REQ-MP-INT-001"
+  },
+  "lesson": "A pull-request review cannot see a pull-request set. The unit of attestation has to be the change plus everything else in flight against the same files, or the honest human in the loop is signing something they were never shown."
+ },
+ "ledger": {
+  "disclaimer": "Targets and model outputs. This is a reference implementation, not a deployed measurement. Every number below is labelled by provenance: TARGET (what we commit to measure), MEASURED (produced by this exercise), or ASSUMPTION.",
+  "primary": {
+   "name": "Escape rate",
+   "definition": "Reverts within 14 days plus linked incidents, per 100 merged changes.",
+   "rule": "Flat or falling while median human review time falls. If it rises, trust for that area drops back to Class A automatically.",
+   "target": "flat vs baseline"
+  },
+  "metrics": [
+   {
+    "name": "Median human minutes per change",
+    "target": "-40%",
+    "prov": "TARGET",
+    "note": "Measured from first open to signature, per review tooling timestamps."
+   },
+   {
+    "name": "Share attested without a full read",
+    "target": "60% by Q2",
+    "prov": "TARGET",
+    "note": "Class B and C only. Class A never counts here."
+   },
+   {
+    "name": "Claim contradiction rate",
+    "target": "<5%",
+    "prov": "TARGET",
+    "note": "Claims in the dossier later contradicted by merged code or a revert."
+   },
+   {
+    "name": "Refusal rate",
+    "target": "8-15%",
+    "prov": "TARGET",
+    "note": "Too low means the reviewer is guessing. Too high means the dossiers are unusable."
+   },
+   {
+    "name": "No-look signature rate",
+    "target": "<2%",
+    "prov": "TARGET",
+    "note": "Signed in under 10 s with every finding bulk-acknowledged. Feeds the spot-check queue."
+   },
+   {
+    "name": "AI finding precision",
+    "target": ">70%",
+    "prov": "TARGET",
+    "note": "Accepted by the owner as real, over findings raised. Kills noise complaints with data."
+   },
+   {
+    "name": "Human spot-check miss rate",
+    "target": "<10%",
+    "prov": "TARGET",
+    "note": "Seeded defects the reviewer missed, sampled weekly per area."
+   },
+   {
+    "name": "Time to merge, p90",
+    "target": "no regression",
+    "prov": "TARGET",
+    "note": "Guardrail. Ceremony must not become a queue."
+   }
+  ],
+  "measured": [
+   {
+    "n": "4",
+    "label": "agent changes dossiers built",
+    "src": "real branches"
+   },
+   {
+    "n": "273",
+    "label": "files covered across the four changes",
+    "src": "git diff --shortstat"
+   },
+   {
+    "n": "6",
+    "label": "pairwise merge dry-runs executed",
+    "src": "git merge-tree"
+   },
+   {
+    "n": "1",
+    "label": "hard conflict set found by machine",
+    "src": "2129 x 2297"
+   },
+   {
+    "n": "1",
+    "label": "silent semantic collision found by machine",
+    "src": "2283 x 2234"
+   },
+   {
+    "n": "368/368",
+    "label": "attribute emissions correctly guarded",
+    "src": "invariant over 222 goldens"
+   },
+   {
+    "n": "4/4",
+    "label": "diagnostic IDs registered, documented, released",
+    "src": "cross-artifact check"
+   },
+   {
+    "n": "0",
+    "label": "changes where the build was verified",
+    "src": "no SDK in this environment, recorded as unverified"
+   }
+  ],
+  "trust": [
+   {
+    "area": "Source generator templates",
+    "class": "B",
+    "score": 0.72,
+    "trend": "+0.06",
+    "note": "23 attested changes, 0 escapes, 1 near miss on template drift."
+   },
+   {
+    "area": "Analyzer diagnostics",
+    "class": "A",
+    "score": 0.41,
+    "trend": "-0.12",
+    "note": "Two changes with global diagnostic side effects. Held at Class A until 5 clean merges."
+   },
+   {
+    "area": "Documentation and analyzers docs",
+    "class": "C",
+    "score": 0.94,
+    "trend": "+0.01",
+    "note": "Auto-receipt eligible."
+   },
+   {
+    "area": "Test resources and goldens",
+    "class": "C",
+    "score": 0.88,
+    "trend": "+0.03",
+    "note": "Invariant-checked instead of read."
+   },
+   {
+    "area": "Public annotation API",
+    "class": "A",
+    "score": 0.55,
+    "trend": "held",
+    "note": "Named API owner required on every change."
+   }
+  ],
+  "decisions": [
+   {
+    "at": "09:41",
+    "by": "reviewer agent",
+    "what": "Refused to rule on metadata-diagnostic suppression in #2283. Escalated to maintainer.",
+    "type": "refusal"
+   },
+   {
+    "at": "09:44",
+    "by": "reviewer agent",
+    "what": "Routed #2297 to Class B on invariant checks over 222 goldens rather than full read.",
+    "type": "routing"
+   },
+   {
+    "at": "09:47",
+    "by": "reviewer agent",
+    "what": "Escalated #2234 F1 as high: silent skip in the suppression path.",
+    "type": "finding"
+   },
+   {
+    "at": "09:52",
+    "by": "reviewer agent",
+    "what": "Blocked pair 2129 x 2297 at merge: 5 conflicting files, template pair must stay in sync.",
+    "type": "block"
+   },
+   {
+    "at": "09:58",
+    "by": "A. Kaissi",
+    "what": "Signed #2297 with residual risk: formatting change unconfirmed, build not run.",
+    "type": "signature"
+   }
+  ],
+  "distrust": [
+   "A dossier that reports confidence but no re-runnable check. Confidence is not evidence.",
+   "A green build standing in for review. Our own exercise could not run the build and said so on every receipt.",
+   "A classifier nobody can read. If routing changes are not diffable and owned, the router becomes the thing you cannot audit.",
+   "A ledger that only counts what the tool saw. Reverts and incidents must be joined from git and the incident system, by someone other than the author.",
+   "Signatures that take four seconds. Bulk-acknowledge is the new rubber stamp and we measure it.",
+   "Any receipt that implies the code is correct. It records what was reviewed, by what, and what was accepted unverified."
+  ]
+ },
+ "failure_modes": [
+  {
+   "mode": "Agent confidence mistaken for evidence",
+   "seen": "The generated dossiers claimed test coverage; no test was run",
+   "fix": "Claims carry a kind. Only a re-runnable check counts as evidence; everything else is a claim.",
+   "detect": "Every claim without a command or file:line is rejected at dossier build."
+  },
+  {
+   "mode": "Diff size mistaken for risk",
+   "seen": "#2297: 237 files, Class B. #2283: 4 files, Class A",
+   "fix": "Route on blast radius drivers, not line count.",
+   "detect": "Routing table recomputed from reachability and touched surface, shown on the receipt."
+  },
+  {
+   "mode": "Reviewing the change, not the set",
+   "seen": "#2283 and #2234 merge clean with contradictory semantics",
+   "fix": "Attestation covers the change plus in-flight branches on the same files.",
+   "detect": "merge-tree dry-run and symbol-level overlap on every open branch."
+  },
+  {
+   "mode": "Silent drop paths",
+   "seen": "#2234 skips members with no diagnostic when the sink is null",
+   "fix": "Skip only after an emitted signal; refusal surfaced in the dossier.",
+   "detect": "Static search for unconditional skips near null-conditional reporting."
+  },
+  {
+   "mode": "Ceremony inflation",
+   "seen": "Not observed, expected at scale",
+   "fix": "Auto-receipt for Class C, batched attestation, and a hard ceiling: no change waits on the reviewer.",
+   "detect": "Time-to-merge p90 guardrail, escalation if it regresses."
+  },
+  {
+   "mode": "Rubber stamping",
+   "seen": "Not observed, expected under deadline pressure",
+   "fix": "Signature requires per-finding acknowledgement; bulk acknowledge is logged and sampled.",
+   "detect": "No-look signature rate, signature duration distribution."
+  },
+  {
+   "mode": "Requirement drift",
+   "seen": "#2297 carries a formatting change the issue never asked for",
+   "fix": "Dossier lists every behaviour change not traceable to the requirement, as a separate section.",
+   "detect": "Claim sets must map to requirement clauses; unmatched hunks are flagged."
+  },
+  {
+   "mode": "The reviewer is never reviewed",
+   "seen": "Not observed: no ground truth in the sample set",
+   "fix": "Weekly seeded-defect spot checks per area, miss rate published next to the trust score.",
+   "detect": "Seeded defects inserted into a shadow queue, owner verdict recorded."
+  }
+ ],
+ "concept": {
+  "name": "Review Receipt",
+  "tagline": "Every merge carries a receipt.",
+  "recommendation": "Stop approving diffs. Attest dossiers. An agent change arrives with a machine-readable dossier: the requirement it serves, one claim per behavioural change, a re-runnable check or a file:line behind each claim, per-claim confidence, and an explicit list of what it refused to decide. An independent reviewer verifies the claims against the repository and returns findings plus refusals. A router assigns review depth from blast radius. A named human signs a receipt that states what was checked and by what, what was not checked and why, and the residual risk accepted. The AI never holds the pen: it has no signature line anywhere in the system.",
+  "principles": [
+   {
+    "t": "A machine may not approve",
+    "d": "The reviewer produces evidence and refusals. Approval is a human signature bound to a hash of the dossier it saw."
+   },
+   {
+    "t": "Every claim is bound to a requirement and a check",
+    "d": "A claim without a requirement ID or a re-runnable check is not evidence, it is prose."
+   },
+   {
+    "t": "Confidence is per claim and earned",
+    "d": "Not one score per pull request. Each claim carries its own confidence, calibrated against outcomes later."
+   },
+   {
+    "t": "Refusal is a first-class output",
+    "d": "Questions that need product intent are escalated, counted, and never guessed at. A refusal rate near zero is a red flag."
+   },
+   {
+    "t": "Review depth follows blast radius",
+    "d": "Reachability and touched surface, not diff size. 237 generated files need invariants; 4 lines in a diagnostic path need a person."
+   },
+   {
+    "t": "The receipt records absence",
+    "d": "What was not checked and why is printed on the artefact the human signs. Skipped builds cannot be invisible."
+   },
+   {
+    "t": "Trust is per area, and withdrawable",
+    "d": "Track record buys lighter review in a module. One escape puts that area back on the attention path, automatically."
+   },
+   {
+    "t": "The reviewer is reviewed",
+    "d": "Weekly seeded-defect spot checks, published miss rate, no-look signature detection."
+   }
+  ],
+  "tradeoffs": [
+   {
+    "t": "Ceremony on small changes",
+    "d": "A dossier costs more than a glance for a one-line doc fix. Mitigation: Class C auto-receipts, batched attestation per area, and a hard rule that no change waits on the reviewer's queue."
+   },
+   {
+    "t": "The dossier is the agent's own account",
+    "d": "Self-report is not proof. Only re-runnable checks and independent verification count, which is why the reviewer re-derives claims instead of trusting them."
+   },
+   {
+    "t": "The router is itself code",
+    "d": "A bad classifier hides risk quietly. Routing rules are readable, diffable, human-owned, and changes to them are Class A by definition."
+   },
+   {
+    "t": "Lighter review can decay into no review",
+    "d": "Accepted. Measured with the escape rate and the no-look signature rate, with automatic reclassification when either moves wrong."
+   },
+   {
+    "t": "Ledger gaming",
+    "d": "If teams hide reverts, trust data inflates. Reverts are joined from git and incidents from the incident system, never self-reported, and the join is owned outside the authoring team."
+   },
+   {
+    "t": "Not a correctness proof",
+    "d": "A receipt says what was reviewed and what was accepted unverified. It does not say the code is right, and the artefact says so in as many words."
+   }
+  ],
+  "limits": [
+   "Sample size: four changes, one repository, no production incident data. Nothing here is a measured productivity claim.",
+   "The build and test suite were not executed in the review environment, so every behavioural claim in this demo is static.",
+   "The classifier is a design, not a validated model. Accuracy is unknown until it runs against historical merges.",
+   "Cross-repository and dependency-graph interactions are out of scope for this demonstration.",
+   "Out of scope by the challenge: model training, vendor selection, a production product.",
+   "We cannot demonstrate an escape-rate improvement without a live deployment; we can only show the mechanism that would produce the measurement."
+  ],
+  "business": {
+   "thesis": "Compliance is moving from documents to evidence. Regulated engineering teams already pay people to reconstruct why a change was safe. The receipt is that reconstruction, produced at merge time instead of during an audit scramble.",
+   "buyer": "Engineering leadership in public-sector integrators, medical devices, transport and defence suppliers. The budget sits with the person who signs the audit response, not with developer tooling.",
+   "beachhead": "A national search-and-rescue platform in Latvia: life-critical, small team, real audit pressure, and already the pilot for agent-written code. Then Nordic public-sector integrators reached through Junction and Tieto.",
+   "model": "Per-org platform fee, metered per attested change, plus an audit-export module for regulated buyers. On-premise tier for defence and classified work, because the artefacts cannot leave the estate.",
+   "pricing": "ASSUMPTION, to be validated in pilots: EUR 18 per engineer per month, EUR 0.40 per attested change above 5,000 monthly, EUR 25k per year for audit export. A 400-engineer organisation lands near EUR 86k per year before export.",
+   "moat": "The outcome ledger. Trust per area only exists after months of merged changes, reverts and incidents joined together. A competitor can copy the dossier format in a week and cannot copy a customer's history.",
+   "why_now": "Agent tokens passed human tokens in February 2026. Review capacity did not move. The constraint is no longer writing code, it is who is willing to put a name on it.",
+   "risks": [
+    "Procurement cycles in the public sector run 9 to 18 months; the pilot revenue has to survive that.",
+    "Incumbent code-quality vendors will bundle a review summary. Our answer is the signed artefact and the ledger, not the summary.",
+    "Liability language: a receipt must never read as a safety certification. Legal review before the first regulated sale."
+   ]
+  }
+ }
+}

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northstar Trust — two AIs check each other, a person signs</title>
+<meta name="description" content="One AI writes a change. A second AI builds it again without looking. The differences go to a person, by name. Every step is fingerprinted so the record can be checked later.">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/fonts-northstar.css">
+<link rel="stylesheet" href="./assets/ns.css">
+<link rel="stylesheet" href="./assets/guard.css">
+</head>
+<body class="g">
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Northstar Trust, home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.2C12.7 7.9 16.1 11.3 22.8 12 16.1 12.7 12.7 16.1 12 22.8 11.3 16.1 7.9 12.7 1.2 12 7.9 11.3 11.3 7.9 12 1.2Z" fill="#0B0C0E"/><rect x="10.9" y="10.9" width="2.2" height="2.2" fill="#2A55E0"/></svg>
+      Northstar <small>Trust layer</small>
+    </a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#idea">The idea</a>
+      <a href="#try">Try it</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#built">Under the hood</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="g-textlink" href="./summary.html">One page</a>
+      <a class="btn btn-dark btn-sm" href="./console.html">Open the record</a>
+    </div>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================ HERO -->
+<section class="g-hero" id="top">
+  <div class="g-hero-in">
+    <div>
+      <span class="lbl">AI assurance · Rīga</span>
+      <h1>Two AIs check each&nbsp;other.<br><span class="blue">A person signs.</span></h1>
+      <p class="g-lead">AI can write something that reads perfectly and is still wrong. So a second AI rebuilds the
+        work without seeing the first attempt — and the differences go to a person, by name.</p>
+      <div class="g-actions">
+        <a class="btn btn-dark" href="#try">Try it</a>
+        <a class="btn btn-line" href="#idea">The idea</a>
+      </div>
+      <p class="g-note">Offline · no install · no AI runs while you read</p>
+    </div>
+
+    <div class="g-record" aria-label="The record at a glance">
+      <span class="dots" aria-hidden="true"></span>
+      <span class="glow" aria-hidden="true"></span>
+      <div class="g-record-top">
+        <span>The record<small>select a step to read it</small></span>
+        <span class="g-seal"><i></i>sealed</span>
+      </div>
+      <ol class="g-steps-mini" id="recordNodes"></ol>
+      <div class="g-record-foot">
+        <span id="recordMeta">loading…</span>
+        <a href="#try">Open →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="g-stats">
+    <div><b>2</b><span>separate attempts</span></div>
+    <div><b>3</b><span>disagreements</span></div>
+    <div><b>1</b><span>person signs</span></div>
+    <div><b>0</b><span>AI approvals</span></div>
+  </div>
+</section>
+
+<!-- ============================================================ IDEA -->
+<section class="g-sec" id="idea">
+  <div class="g-in">
+    <div class="g-head">
+      <div>
+        <span class="lbl">The idea</span>
+        <h2>One job. Two attempts. One signature.</h2>
+      </div>
+      <p>No new process to learn. The same rule applies to every change: nobody marks their own work. The second
+        attempt is not a second opinion — it is a second build, made without seeing the first.</p>
+    </div>
+
+    <div class="g-three">
+      <article>
+        <span class="gnum">01</span>
+        <div>
+          <h3>An AI does the work</h3>
+          <p>It gets the job and the rules, and writes its own tests — the checks it thinks prove the work is correct.
+            On its own, this looks finished.</p>
+        </div>
+      </article>
+      <article>
+        <span class="gnum">02</span>
+        <div>
+          <h3>A second AI rebuilds it, blind</h3>
+          <p>Same rules, fresh start, no access to the first attempt. If the rules can be read two ways, the two
+            attempts will not match — and that is the signal.</p>
+        </div>
+      </article>
+      <article>
+        <span class="gnum">03</span>
+        <div>
+          <h3>A person signs the difference</h3>
+          <p>The disagreements become a short list, each tied to the rule it touches. A name goes against it, with the
+            time it took. Under ten seconds is flagged.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ TRY -->
+<section class="g-sec alt" id="try">
+  <div class="g-in">
+    <div class="g-head">
+      <div>
+        <span class="lbl">Try it</span>
+        <h2>Six steps. One real change.</h2>
+      </div>
+      <p>A retry for a payment system: wait, try again, never charge twice. Step through it below, or press
+        <b style="font-weight:600">Check everything</b> and let your own browser verify the record.</p>
+    </div>
+
+    <div class="trace" id="trace">
+      <div class="trace-top">
+        <span class="id" id="traceId">RETRY-04 · a retry that tries again</span>
+        <span class="chip dark" id="traceState" style="height:21px;font-size:9px"><i></i>not checked yet</span>
+        <span class="sp"></span>
+        <div class="mode" role="group" aria-label="How much detail to show">
+          <button type="button" data-mode="plain" aria-pressed="true">Plain</button>
+          <button type="button" data-mode="technical" aria-pressed="false">Technical</button>
+        </div>
+      </div>
+      <div class="trace-grid">
+        <div class="rail">
+          <div class="railhead"><span>The six steps</span><span id="railCount">—</span></div>
+          <div id="traceRail"></div>
+        </div>
+        <div class="panel" id="tracePanel" aria-live="polite"></div>
+      </div>
+      <div class="trace-nav">
+        <button class="btn btn-quiet btn-xs" id="btnPrev" type="button">← Back</button>
+        <span id="stepLabel">Step 1 of 6 · The instruction</span>
+        <button class="btn btn-quiet btn-xs" id="btnNext" type="button">Next →</button>
+      </div>
+      <div class="trace-foot">
+        <button class="btn btn-dark btn-sm" id="btnVerify" type="button">Check everything</button>
+        <button class="btn btn-ghost btn-sm" id="btnTamper" type="button">Change one character</button>
+        <button class="btn btn-quiet btn-sm" id="btnReset" type="button">Reset</button>
+        <span class="sp"></span>
+        <button class="logtoggle" id="logToggle" type="button" aria-expanded="false">Check log</button>
+      </div>
+      <pre class="log" id="traceLog" aria-live="polite">Ready. Six steps, eight files, two separate attempts.</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ EVIDENCE -->
+<section class="g-sec" id="evidence">
+  <div class="g-in">
+    <div class="g-head">
+      <div>
+        <span class="lbl">What it found</span>
+        <h2>One AI would have said yes.</h2>
+      </div>
+      <p>Both AIs wrote their own tests. Running each set against each attempt is what turns a confident answer into
+        a checkable one. The gap between these numbers is the review.</p>
+    </div>
+
+    <div class="g-figs">
+      <div><b>4<em>/4</em></b><span>AI #1’s own tests, on its own work</span></div>
+      <div class="bad"><b>5<em>/8</em></b><span>AI #2’s tests, on AI #1’s work</span></div>
+      <div><b>8<em>/8</em></b><span>AI #2’s tests, on its own work</span></div>
+      <div class="bad"><b>2</b><span>mistakes found before shipping</span></div>
+    </div>
+
+    <div class="g-verifyline">
+      <button class="btn btn-dark" id="btnRun" type="button">Run the 32 checks</button>
+      <span class="out" id="runOut">Not run yet — the checks take a moment.</span>
+      <span class="sp"></span>
+      <a href="./console.html">The full ledger →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ BUILT -->
+<section class="g-band" id="built">
+  <div class="g-in">
+    <span class="lbl light">Under the hood</span>
+    <h2>Seven stages. One file.</h2>
+    <p>Each stage writes a sealed step: the instruction, two builds, the differences, the review, the signature.
+      Nothing earlier can be rewritten — an edit anywhere breaks everything after it.</p>
+
+    <ol class="g-pipe">
+      <li><span class="n">01</span><span class="t">Instruction</span></li>
+      <li><span class="n">02</span><span class="t">Separate contexts</span></li>
+      <li><span class="n">03</span><span class="t">First attempt</span></li>
+      <li><span class="n">04</span><span class="t">Second attempt</span></li>
+      <li><span class="n">05</span><span class="t">Differences</span></li>
+      <li><span class="n">06</span><span class="t">Review</span></li>
+      <li><span class="n">07</span><span class="t">Signature</span></li>
+    </ol>
+
+    <a class="g-bandlink" href="./console.html">Open the full record — six steps, both attempts, every difference →</a>
+  </div>
+</section>
+
+<!-- ============================================================ MORE -->
+<section class="g-sec" id="more">
+  <div class="g-in">
+    <div class="g-links">
+      <a href="./console.html">
+        <span class="k">Open first</span>
+        <span><b>The full record</b><small>Six steps, the two attempts side by side, every difference, and what was signed.</small></span>
+        <span class="go">Console</span>
+      </a>
+      <a href="./summary.html">
+        <span class="k">One page</span>
+        <span><b>The printable summary</b><small>The problem, the three moves, the numbers and the limits — on a single A4 sheet.</small></span>
+        <span class="go">Print</span>
+      </a>
+      <a href="./SPEC-RETRY-04.md">
+        <span class="k">The rules</span>
+        <span><b>SPEC-RETRY-04</b><small>Seven plain rules both AIs were given — two of them deliberately left open.</small></span>
+        <span class="go">Read</span>
+      </a>
+      <a href="./tools/verify.py">
+        <span class="k">The checker</span>
+        <span><b>verify.py</b><small>Forty-seven checks that work without this page. Prints PASS or FAIL, exits 0 or 1.</small></span>
+        <span class="go">Code</span>
+      </a>
+    </div>
+    <p class="g-also">Also in this package: the same control pattern applied elsewhere —
+      <a href="./review/index.html">four real AI changes</a>,
+      <a href="./sarops/index.html">search planning</a>,
+      <a href="./sar-management.html">SAR planning console</a>,
+      <a href="./deck/index.html">the deck</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-top">
+      <div style="flex:1;min-width:220px">
+        <div class="foot-brand">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.2C12.7 7.9 16.1 11.3 22.8 12 16.1 12.7 12.7 16.1 12 22.8 11.3 16.1 7.9 12.7 1.2 12 7.9 11.3 11.3 7.9 12 1.2Z" fill="#0B0C0E"/><rect x="10.9" y="10.9" width="2.2" height="2.2" fill="#2A55E0"/></svg>
+          Northstar Trust
+        </div>
+        <p>A second AI checks the first, and a person signs the difference. Reference implementation, not a deployed
+          product. Junction 2026 · Tieto · Earned trust in AI code.</p>
+      </div>
+      <div class="sp"></div>
+      <div class="foot-links">
+        <a href="#idea">The idea</a>
+        <a href="#try">Try it</a>
+        <a href="#evidence">Evidence</a>
+        <a href="./console.html">Full record</a>
+        <a href="./summary.html">One page</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>Latvian Ghostbusters · Rīga</span>
+      <span>·</span>
+      <span id="footStamp">the record · loading</span>
+      <span class="sp"></span>
+      <span>Supported by</span>
+      <img src="./assets/brand/ajelix-lockup-ink.png" alt="Ajelix" style="height:14px;opacity:.75">
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="./assets/data.js"></script>
+<script src="./assets/chain.js"></script>
+<script src="./assets/landing.js"></script>
+</body>
+</html>

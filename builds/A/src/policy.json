@@ -1,0 +1,10 @@
+{
+  "id": "RETRY-04/A",
+  "defaults": {
+    "maxAttempts": 3,
+    "baseMs": 200,
+    "capMs": 2000,
+    "retryOn": [429, 503]
+  },
+  "notes": "Caps honour Retry-After at 8 s so a slow server cannot hold a worker slot."
+}

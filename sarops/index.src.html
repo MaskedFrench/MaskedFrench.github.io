@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAROPS workbench — drift, allocation, verification and validation</title>
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="./sarops.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="#C9D6E6" stroke-width="1.2" opacity=".5"/>
+      <circle cx="12" cy="12" r="5" fill="none" stroke="#C9D6E6" stroke-width="1.2" opacity=".8"/>
+      <path d="M12 2v20M2 12h20" stroke="#C9D6E6" stroke-width="1" opacity=".45"/>
+      <circle cx="12" cy="12" r="2" fill="#E9F35F"/>
+    </svg>
+    <div>
+      <b>SAROPS workbench</b>
+      <span>Search and Rescue Optimal Planning System · reference implementation</span>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-tab="plan">01 · Plan</button>
+    <button class="tab" data-tab="analysis">02 · AI analysis</button>
+    <button class="tab" data-tab="vv">03 · Verification &amp; validation</button>
+  </nav>
+  <div class="topmeta">
+    <span class="dot"></span>OFFLINE · NO MODEL CALL
+  </div>
+</header>
+
+<main>
+  <!-- ============================================================ PLAN -->
+  <section class="view on" id="view-plan">
+    <aside class="panel controls">
+      <form id="scenario" autocomplete="off">
+        <div class="ph"><h2>Scenario</h2><span>datum · environment · ensemble</span></div>
+
+        <label>Search object
+          <select id="object">
+            <option value="piw">Person in water</option>
+            <option value="piw_lj">Person in water, lifejacket</option>
+            <option value="raft">Life raft</option>
+            <option value="kayak">Kayak / small craft</option>
+            <option value="boat">Disabled motorboat</option>
+            <option value="debris">Fishing gear / debris</option>
+            <option value="container">Shipping container</option>
+          </select>
+        </label>
+
+        <div class="row2">
+          <label>Time since datum (h)<input id="elapsed" type="number" min="0.5" max="72" step="0.5" value="3"></label>
+          <label>Planning horizon (h)<input id="horizon" type="number" min="1" max="24" step="1" value="6"></label>
+        </div>
+
+        <div class="sect">Environment</div>
+        <div class="row2">
+          <label>Wind from (°)<input id="windFrom" type="number" min="0" max="359" value="250"></label>
+          <label>Wind (kn)<input id="windKts" type="number" min="0" max="70" step="1" value="14"></label>
+        </div>
+        <div class="row2">
+          <label>Current toward (°)<input id="currentTo" type="number" min="0" max="359" value="100"></label>
+          <label>Current (kn)<input id="currentKts" type="number" min="0" max="3" step="0.1" value="0.8"></label>
+        </div>
+
+        <div class="sect">Ensemble</div>
+        <div class="row2">
+          <label>Particles<input id="particles" type="number" min="500" max="30000" step="500" value="12000"></label>
+          <label>Seed<input id="seed" type="number" value="2026"></label>
+        </div>
+        <p class="hint">Same seed, same field. Coefficients are planning defaults from the Allen &amp; Plourde (1999)
+          taxonomy — editable, not certified.</p>
+      </form>
+      <div class="acts">
+        <button class="btn primary" id="run">Run drift simulation</button>
+        <button class="btn" id="alloc">Allocate plan</button>
+      </div>
+    </aside>
+
+    <section class="panel mapwrap">
+      <div class="ph"><h2>Probability field</h2><span>nm from datum · 0.25 nm cells</span></div>
+      <svg id="map" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Drift probability field with search boxes"></svg>
+      <div class="legend">
+        <span><i style="background:#3F6BFF"></i>open probability</span>
+        <span><i style="background:#788496"></i>searched</span>
+        <span><i style="background:#E9F35F"></i>drift vector</span>
+        <span><i style="border:1px dashed #A9BAFF;background:none"></i>sortie box</span>
+        <span>equal-area circles: 50 / 75 / 95%</span>
+      </div>
+    </section>
+
+    <aside class="panel results">
+      <div class="ph"><h2>Output</h2><span>computed</span></div>
+      <div id="results"></div>
+      <div class="acts col">
+        <button class="btn" id="exec">Execute sorties · Bayesian update</button>
+        <button class="btn ghost" id="reset">Reset plan</button>
+        <button class="btn ghost" id="sens">Run sensitivity (±10°, ±20%)</button>
+      </div>
+    </aside>
+  </section>
+
+  <!-- ============================================================ ANALYSIS -->
+  <section class="view" id="view-analysis">
+    <div id="analysis" class="analysis"></div>
+  </section>
+
+  <!-- ============================================================ V&V -->
+  <section class="view" id="view-vv">
+    <div class="vv">
+      <header class="vv-head">
+        <span class="lbl">Assurance</span>
+        <h1>Verification and validation</h1>
+        <p>Two different questions, answered separately. <b>Verification</b> asks whether the model solves its own
+          equations correctly — a mathematics question, answered here by executable checks. <b>Validation</b> asks
+          whether those equations describe the world well enough for the decision — a question answered only by
+          comparison with external evidence. This page shows both, and names what has not been done.</p>
+        <div class="defs">
+          <div><b>Verification</b><span>“Solving the equations right.” Code and solution verification against analytic cases, conservation laws and convergence.</span></div>
+          <div><b>Validation</b><span>“Solving the right equations.” Comparison of model outputs and coefficients against published field data and accepted practice.</span></div>
+          <div><b>Credibility</b><span>The evidence package a duty officer needs before trusting a number: checks, comparisons, limitations, references.</span></div>
+        </div>
+        <p class="cite-note">Framework follows ASME V&amp;V 20-2009 and NASA-STD-7009A; the distinction is Roache’s and is
+          carried into both standards.</p>
+      </header>
+
+      <section class="vv-block">
+        <div class="vv-h"><h2>1 · Verification — executed in this browser</h2><span>10 checks · deterministic</span></div>
+        <div class="vv-actions"><button class="btn" id="runchecks">Re-run the verification suite</button><span>executed live in this browser</span></div>
+        <div id="checks"></div>
+      </section>
+
+      <section class="vv-block">
+        <div class="vv-h"><h2>2 · Validation — what the model is checked against</h2><span>external evidence, per claim</span></div>
+        <table class="t val">
+          <thead><tr><th>Claim in the model</th><th>External evidence</th><th>Status</th></tr></thead>
+          <tbody>
+          <tr><td>Drift is leeway plus current, with divergence</td>
+            <td>Allen &amp; Plourde (1999) leeway model and taxonomy: downwind/crosswind coefficients per object class, divergence about the downwind direction.</td>
+            <td><span class="pill ok">Method agreement</span></td></tr>
+          <tr><td>Ensemble spread grows with time and wind</td>
+            <td>Breivik &amp; Allen (2008) operational drift model: stochastic leeway perturbations, ensemble spread.</td>
+            <td><span class="pill ok">Method agreement</span></td></tr>
+          <tr><td>POS from cell probability × detection</td>
+            <td>Optimal search theory (Stone 1975); SAROPS operational practice (Kratzke, Stone &amp; Frost 2010).</td>
+            <td><span class="pill ok">Method agreement</span></td></tr>
+          <tr><td>Coverage C = W / S drives POD</td>
+            <td>IAMSAR Manual Vol. II: coverage factor for parallel sweep, C = W/S; POD = 1 − exp(−C) for random search.</td>
+            <td><span class="pill ok">Standard practice</span></td></tr>
+          <tr><td>Default sweep widths are plausible</td>
+            <td>Koester et al. (2014): effective sweep width ≈ 1.8 × detection range (high visibility), 1.6 × (medium), 1.1 × (low).</td>
+            <td><span class="pill ok">Order of magnitude</span></td></tr>
+          <tr><td>Posterior update after a search</td>
+            <td>Bayesian update p ← p(1−POD), renormalised — the update used in SAROPS (Kratzke et al. 2010) and classical Bayesian search.</td>
+            <td><span class="pill ok">Method agreement</span></td></tr>
+          <tr><td>The plan is operationally sufficient</td>
+            <td>No trial, no measured POD, no replay of a real case in this build.</td>
+            <td><span class="pill bad">Not validated</span></td></tr>
+          <tr><td>Sweep widths are correct for these assets</td>
+            <td>Defaults only; real values require trial data per sensor, sea state and visibility.</td>
+            <td><span class="pill bad">Not validated</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="gapbox">
+          <h3>What would close the gap</h3>
+          <ol>
+            <li><b>Replay a documented case.</b> Run a past search with the forecast that was actually available, and
+              compare the first detection point with the planned boxes. Publish the miss distance, not the hit.</li>
+            <li><b>Measure POD.</b> Instrumented exercise sorties with known targets give detection rates per asset,
+              sea state and visibility — the only honest source of sweep width.</li>
+            <li><b>Blind comparison against SAROPS.</b> Same scenario, same environment, two implementations; report
+              divergence in centroid, containment and POS.</li>
+            <li><b>Independent replication.</b> A second team re-implements the checks from the specification and
+              publishes whether they pass.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="vv-block">
+        <div class="vv-h"><h2>3 · Limitations, stated on the artefact</h2><span>not a certified tool</span></div>
+        <ul class="limits2">
+          <li><b>No environmental feed.</b> Wind and current are officer inputs; no EDS, no forecast interpolation, no sea state.</li>
+          <li><b>No certified coefficients.</b> The leeway table is representative and editable; it is not the Allen &amp; Plourde table reproduced in full.</li>
+          <li><b>No measured sweep widths.</b> Defaults are order-of-magnitude values, labelled as such, not trial results.</li>
+          <li><b>Single datum, one object.</b> No multiple datum scenarios, no survivors in different drift classes in one field.</li>
+          <li><b>No operational validation.</b> Nothing here has been tested against a live search; the plan is advisory and a duty officer owns the tasking.</li>
+        </ul>
+      </section>
+
+      <section class="vv-block">
+        <div class="vv-h"><h2>4 · References</h2><span>every claim above resolves here</span></div>
+        <ol class="refs">
+          <li>Kratzke, T. M., Stone, L. D., &amp; Frost, J. R. (2010). <i>Search and Rescue Optimal Planning System.</i>
+            13th International Conference on Information Fusion (FUSION), 1–8.
+            <a href="https://www.semanticscholar.org/paper/800320f7eebda4bb36bd72996cc1b32087aa8166" target="_blank" rel="noopener">semanticscholar.org</a></li>
+          <li>Stone, L. D. (1975). <i>Theory of Optimal Search.</i> Academic Press, New York.</li>
+          <li>Allen, A. A., &amp; Plourde, J. V. (1999). <i>Review of Leeway: Field Experiments and Implementation.</i>
+            USCG Research &amp; Development Center, report CG-D-08-99.
+            <a href="https://apps.dtic.mil/sti/tr/pdf/ADA366414.pdf" target="_blank" rel="noopener">DTIC ADA366414</a></li>
+          <li>Breivik, Ø., &amp; Allen, A. A. (2008). An operational search and rescue model for the Norwegian Sea and the
+            North Sea. <i>Journal of Marine Systems</i>, 69(1–2), 99–113.
+            <a href="https://doi.org/10.1016/j.jmarsys.2007.02.010" target="_blank" rel="noopener">doi:10.1016/j.jmarsys.2007.02.010</a></li>
+          <li>IMO &amp; ICAO. <i>IAMSAR Manual, Volume II — Mission Co-ordination</i> (current edition). Coverage factor
+            C = W/S; search planning worksheets, Appendix L.
+            <a href="https://www.imo.org/en/ourwork/safety/pages/iamsarmanual.aspx" target="_blank" rel="noopener">imo.org</a></li>
+          <li>Koester, R. J., Chiacchia, K. B., Twardy, C. R., Cooper, D. C., Frost, J. R., &amp; Robe, R. Q. (2014).
+            Use of the Visual Range of Detection to Estimate Effective Sweep Width for Land Search and Rescue.
+            <i>Wilderness &amp; Environmental Medicine</i>.
+            <a href="https://doi.org/10.1016/j.wem.2013.09.016" target="_blank" rel="noopener">doi:10.1016/j.wem.2013.09.016</a></li>
+          <li>ASME (2009). <i>V&amp;V 20-2009: Standard for Verification and Validation in Computational Fluid Dynamics
+            and Heat Transfer.</i> American Society of Mechanical Engineers.</li>
+          <li>NASA (2016). <i>NASA-STD-7009A: Standard for Models and Simulations.</i>
+            <a href="https://standards.nasa.gov/standard/NASA/NASA-STD-7009" target="_blank" rel="noopener">standards.nasa.gov</a></li>
+        </ol>
+        <p class="cite-note">Citation form is author–year; links resolve to the publisher, DOI or archive copy used when
+          this build was prepared.</p>
+      </section>
+    </div>
+  </section>
+</main>
+
+<div class="flash" id="flash"></div>
+
+<script src="./engine.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>

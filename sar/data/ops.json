@@ -1,0 +1,902 @@
+{
+ "meta": {
+  "system": "National SAR Crisis Management Centre",
+  "org": "Team Latvian Ghostbusters",
+  "reg": "Synthetic exercise",
+  "motto": "So Others May Live · Lai citi dzīvotu.",
+  "data_note": "Synthetic exercise data. Callsigns only, no personal data. Not connected to any live system.",
+  "clock_start": "06:40",
+  "generated": "2026-11-13"
+ },
+ "geo": {
+  "path": "M774.4,605.2 779.7,603.3 782.0,597.0 791.4,598.7 794.4,603.3 800.0,604.4 802.2,599.4 811.9,595.4 812.5,590.2 816.1,585.9 818.8,576.7 822.3,576.9 826.0,570.0 831.7,566.5 842.5,566.9 843.7,562.7 846.7,560.9 851.8,561.2 853.2,564.3 857.1,565.1 863.9,575.2 869.1,577.4 877.7,573.2 880.0,569.9 889.1,575.2 914.2,577.0 917.6,561.6 915.5,550.5 919.4,545.3 919.4,541.1 932.6,528.7 939.8,528.1 941.3,524.0 940.3,521.4 944.2,518.0 940.5,514.5 949.9,510.0 954.0,511.2 963.2,493.2 968.3,491.6 973.2,493.6 973.2,491.0 976.4,488.2 979.9,489.1 980.1,485.6 983.0,482.1 991.6,478.3 992.7,473.1 991.0,472.1 995.1,469.4 992.8,468.2 992.5,465.5 1000.0,455.2 993.7,433.4 989.5,428.0 993.8,421.4 992.1,415.8 993.5,410.6 984.9,400.0 984.3,398.3 985.9,395.6 984.3,393.7 980.1,394.9 979.8,390.2 981.6,386.9 986.5,384.7 986.8,379.6 984.1,376.9 973.0,375.0 972.5,370.5 968.6,363.3 968.8,354.3 966.4,350.2 964.1,350.2 964.4,345.6 961.9,345.7 955.8,339.0 955.3,334.7 953.1,334.2 955.4,329.0 959.5,328.1 959.4,321.6 963.8,319.3 962.7,313.0 953.6,317.1 953.1,312.7 949.3,305.3 949.8,302.8 946.3,302.3 920.3,313.6 919.7,308.9 921.8,304.7 922.0,298.2 924.0,293.1 930.9,292.1 931.7,282.9 935.4,270.6 927.9,270.1 929.8,262.3 932.6,258.5 931.8,254.9 935.3,250.4 927.9,247.4 928.5,245.8 933.0,247.2 933.1,245.0 930.5,243.5 931.0,242.0 942.1,235.9 944.1,230.1 943.1,221.5 945.4,218.6 945.6,214.0 949.3,209.5 947.9,205.8 948.9,198.7 942.9,190.7 937.1,191.4 935.9,188.6 936.7,185.6 923.7,178.4 921.7,172.6 915.4,170.9 912.5,167.4 906.7,168.6 900.6,165.2 903.9,154.3 905.4,154.8 906.0,146.8 907.6,143.9 904.7,141.4 906.1,136.7 898.4,136.1 886.7,140.5 881.2,137.3 877.8,141.8 865.1,133.4 856.3,133.5 836.1,125.9 834.3,124.8 835.8,121.9 834.0,119.9 826.3,117.9 822.2,120.4 821.4,118.8 822.9,115.9 816.9,112.7 810.1,118.3 810.6,123.1 802.3,125.4 801.2,127.8 799.2,126.0 800.4,127.3 799.0,131.1 795.8,130.5 798.5,127.5 793.6,124.2 792.7,128.8 785.1,129.5 784.5,132.6 781.2,132.6 776.7,138.9 777.0,143.9 773.1,141.9 772.6,136.2 769.4,139.2 769.5,142.3 764.4,142.1 760.9,140.1 756.8,127.2 737.3,126.2 735.0,122.9 730.5,122.2 726.3,115.9 727.1,114.6 725.3,112.6 726.1,111.2 724.1,109.2 725.6,108.2 725.2,106.4 721.4,104.5 721.4,101.1 716.9,99.0 720.5,92.2 711.9,87.6 710.9,83.1 703.1,79.1 700.4,80.6 695.6,78.7 695.6,75.0 700.3,61.5 700.0,58.6 695.1,59.2 692.1,55.9 687.0,59.2 682.8,57.3 676.9,58.9 675.2,54.4 672.9,56.4 667.6,54.5 663.2,44.5 656.2,39.6 651.5,44.8 648.1,44.5 648.0,42.5 644.0,41.5 642.6,37.9 634.6,34.5 636.5,30.6 634.6,27.5 631.4,30.4 630.6,27.4 625.2,28.1 626.2,25.5 621.6,26.8 615.7,21.5 619.0,19.2 616.5,16.2 604.8,12.6 595.5,0.0 591.2,5.4 596.6,11.9 596.4,20.5 595.5,20.5 596.4,22.0 593.7,23.1 590.1,22.0 590.0,19.7 586.4,16.5 588.6,15.8 585.0,13.1 584.7,10.1 586.2,7.0 584.7,8.1 584.6,5.5 583.1,5.1 584.6,1.9 584.0,0.2 569.4,0.9 569.3,3.8 565.4,3.8 557.6,16.0 554.1,17.7 547.8,18.1 531.8,27.5 528.5,22.9 519.4,25.0 519.6,29.3 515.7,29.9 512.5,34.0 510.2,30.7 506.0,30.8 503.8,35.1 502.2,34.7 497.8,30.0 489.0,34.7 487.9,37.9 481.0,39.4 478.6,43.6 480.6,44.0 479.6,45.8 480.6,50.6 474.0,54.5 473.7,52.7 465.4,51.5 463.2,64.6 465.2,73.2 465.4,81.7 464.1,82.0 465.0,83.4 464.5,95.3 466.8,99.8 470.5,116.6 467.3,126.8 468.1,131.5 467.2,135.8 469.7,143.3 473.8,205.1 468.7,216.8 445.7,241.2 430.6,252.1 419.4,254.7 420.0,258.0 415.4,264.2 407.8,270.1 383.5,279.5 365.1,280.7 357.0,277.8 352.2,273.3 347.0,263.2 329.3,260.1 318.6,252.9 312.4,243.6 311.6,236.8 312.8,230.7 304.5,213.1 304.8,206.1 302.2,196.0 298.9,189.9 299.5,187.7 297.5,186.7 298.2,181.4 284.9,176.7 271.5,167.0 258.9,148.1 238.1,133.5 231.6,126.8 226.8,119.8 222.0,105.2 221.7,94.6 225.9,81.1 223.4,81.2 210.3,85.9 145.5,118.8 120.4,121.7 102.3,128.5 86.8,163.7 80.8,170.2 77.6,169.3 77.9,173.3 75.3,178.8 62.8,198.7 61.0,228.0 62.5,252.0 61.5,259.3 56.6,271.6 38.8,292.5 28.1,299.1 12.9,313.8 13.4,339.3 12.3,354.4 5.2,383.0 0.0,385.4 0.9,391.3 3.6,395.3 5.1,406.0 1.2,434.6 3.2,450.9 2.7,467.5 14.1,506.0 27.1,501.7 30.0,504.6 33.0,504.0 38.0,492.5 36.4,486.7 36.9,482.6 43.6,479.5 50.5,468.5 67.4,460.9 73.8,449.3 78.6,449.7 81.8,446.8 82.3,443.9 88.1,441.8 97.7,445.1 104.8,444.5 106.9,440.5 113.4,437.0 120.0,430.0 125.2,432.5 136.3,427.5 139.0,428.4 141.5,419.4 144.6,419.2 145.3,416.5 149.3,418.6 160.5,414.8 165.4,417.9 171.4,416.8 175.7,422.8 185.4,420.3 190.4,424.4 201.7,420.5 227.3,427.2 230.5,431.8 236.1,435.0 242.9,429.6 257.9,431.6 266.3,429.3 270.2,425.8 269.1,423.1 271.3,422.2 271.8,419.2 275.8,419.3 276.9,421.4 280.3,421.2 282.6,430.2 280.7,430.8 283.7,440.1 286.2,442.9 289.7,441.9 292.8,446.8 305.3,438.6 303.7,434.3 304.9,433.3 303.4,431.2 318.9,429.9 322.1,427.1 333.3,428.1 337.5,430.3 340.3,435.0 354.9,439.9 366.6,432.9 385.1,429.5 387.3,431.0 384.7,438.8 385.4,442.0 387.4,442.8 390.4,437.4 420.0,440.5 420.5,445.3 424.2,448.1 423.8,453.1 430.9,453.7 433.8,457.6 433.2,460.3 434.1,460.8 441.7,460.3 445.1,456.3 457.3,451.6 456.7,447.8 464.2,449.1 466.6,454.9 471.3,453.4 475.6,457.8 479.8,458.5 488.8,452.7 497.1,450.9 496.7,442.2 503.3,436.2 503.8,429.0 511.9,428.8 514.2,426.0 513.8,421.9 524.0,423.0 527.8,419.9 528.2,417.3 530.7,420.2 535.8,418.9 534.4,413.8 539.1,410.2 543.6,412.6 541.4,417.7 541.9,419.6 544.8,422.6 546.9,429.1 550.6,431.6 551.2,445.4 557.0,450.1 557.5,453.8 562.6,456.6 565.2,474.0 567.5,476.6 577.7,479.7 582.3,479.1 587.0,475.1 593.3,483.6 598.1,487.0 610.4,483.6 610.1,486.1 612.7,487.0 614.1,484.6 624.2,487.1 624.9,483.4 628.5,481.8 630.6,482.7 632.5,488.3 637.6,489.6 644.3,489.5 647.3,485.8 648.9,487.2 647.8,490.7 651.0,493.4 649.4,501.7 667.5,509.7 669.6,515.2 672.8,517.8 671.5,521.3 673.1,523.5 677.5,523.2 688.7,528.1 692.3,532.8 693.7,531.7 698.6,534.9 699.8,539.8 708.8,553.7 720.2,558.9 723.8,564.1 724.0,570.6 729.2,581.8 735.3,588.1 740.3,588.2 743.9,596.5 752.7,596.5 763.9,604.2 773.7,604.7Z",
+  "w": 1000.0,
+  "h": 605.2,
+  "bbox": [
+   20.962119271000063,
+   55.674681365000026,
+   28.23967285200007,
+   58.081449973000076
+  ]
+ },
+ "cities": [
+  {
+   "name": "Rīga",
+   "lon": 24.1052,
+   "lat": 56.9496,
+   "region": "Rīga",
+   "rank": 1
+  },
+  {
+   "name": "Daugavpils",
+   "lon": 26.5356,
+   "lat": 55.8747,
+   "region": "Latgale",
+   "rank": 1
+  },
+  {
+   "name": "Liepāja",
+   "lon": 21.0136,
+   "lat": 56.5051,
+   "region": "Kurzeme",
+   "rank": 1
+  },
+  {
+   "name": "Jelgava",
+   "lon": 23.7214,
+   "lat": 56.6514,
+   "region": "Zemgale",
+   "rank": 1
+  },
+  {
+   "name": "Jūrmala",
+   "lon": 23.771,
+   "lat": 56.968,
+   "region": "Rīga",
+   "rank": 2
+  },
+  {
+   "name": "Ventspils",
+   "lon": 21.5644,
+   "lat": 57.3894,
+   "region": "Kurzeme",
+   "rank": 1
+  },
+  {
+   "name": "Rēzekne",
+   "lon": 27.33,
+   "lat": 56.5099,
+   "region": "Latgale",
+   "rank": 1
+  },
+  {
+   "name": "Valmiera",
+   "lon": 25.4275,
+   "lat": 57.5412,
+   "region": "Vidzeme",
+   "rank": 1
+  },
+  {
+   "name": "Jēkabpils",
+   "lon": 25.857,
+   "lat": 56.499,
+   "region": "Zemgale",
+   "rank": 2
+  },
+  {
+   "name": "Ogre",
+   "lon": 24.6056,
+   "lat": 56.8167,
+   "region": "Rīga",
+   "rank": 2
+  },
+  {
+   "name": "Cēsis",
+   "lon": 25.274,
+   "lat": 57.313,
+   "region": "Vidzeme",
+   "rank": 2
+  },
+  {
+   "name": "Kuldīga",
+   "lon": 21.968,
+   "lat": 56.968,
+   "region": "Kurzeme",
+   "rank": 2
+  },
+  {
+   "name": "Madona",
+   "lon": 26.218,
+   "lat": 56.854,
+   "region": "Vidzeme",
+   "rank": 2
+  },
+  {
+   "name": "Sigulda",
+   "lon": 24.859,
+   "lat": 57.153,
+   "region": "Rīga",
+   "rank": 2
+  },
+  {
+   "name": "Gulbene",
+   "lon": 26.753,
+   "lat": 57.177,
+   "region": "Vidzeme",
+   "rank": 2
+  },
+  {
+   "name": "Alūksne",
+   "lon": 27.047,
+   "lat": 57.421,
+   "region": "Vidzeme",
+   "rank": 2
+  },
+  {
+   "name": "Bauska",
+   "lon": 24.191,
+   "lat": 56.407,
+   "region": "Zemgale",
+   "rank": 2
+  },
+  {
+   "name": "Dobele",
+   "lon": 23.277,
+   "lat": 56.622,
+   "region": "Zemgale",
+   "rank": 2
+  },
+  {
+   "name": "Tukums",
+   "lon": 23.155,
+   "lat": 56.967,
+   "region": "Zemgale",
+   "rank": 2
+  },
+  {
+   "name": "Krāslava",
+   "lon": 27.167,
+   "lat": 55.895,
+   "region": "Latgale",
+   "rank": 2
+  },
+  {
+   "name": "Preiļi",
+   "lon": 26.724,
+   "lat": 56.294,
+   "region": "Latgale",
+   "rank": 2
+  },
+  {
+   "name": "Balvi",
+   "lon": 27.27,
+   "lat": 57.13,
+   "region": "Latgale",
+   "rank": 2
+  },
+  {
+   "name": "Limbaži",
+   "lon": 24.714,
+   "lat": 57.513,
+   "region": "Vidzeme",
+   "rank": 2
+  },
+  {
+   "name": "Valka",
+   "lon": 26.01,
+   "lat": 57.775,
+   "region": "Vidzeme",
+   "rank": 2
+  },
+  {
+   "name": "Talsi",
+   "lon": 22.588,
+   "lat": 57.245,
+   "region": "Kurzeme",
+   "rank": 2
+  },
+  {
+   "name": "Saldus",
+   "lon": 22.493,
+   "lat": 56.663,
+   "region": "Kurzeme",
+   "rank": 2
+  }
+ ],
+ "regions": [
+  "Rīga",
+  "Kurzeme",
+  "Zemgale",
+  "Vidzeme",
+  "Latgale"
+ ],
+ "units": [
+  {
+   "id": "U01",
+   "callsign": "LGB USAR-1",
+   "capability": "usar",
+   "base": "Rīga",
+   "region": "Rīga",
+   "lon": 24.1052,
+   "lat": 56.9496,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 22,
+   "comms": "radio",
+   "speed": 55,
+   "people": 8,
+   "note": "Heavy rescue, shoring, cutting"
+  },
+  {
+   "id": "U02",
+   "callsign": "LGB USAR-2",
+   "capability": "usar",
+   "base": "Jelgava",
+   "region": "Zemgale",
+   "lon": 23.7214,
+   "lat": 56.6514,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 35,
+   "comms": "radio",
+   "speed": 55,
+   "people": 6,
+   "note": "Light rescue, confined space"
+  },
+  {
+   "id": "U03",
+   "callsign": "LGB USAR-3",
+   "capability": "usar",
+   "base": "Kuldīga",
+   "region": "Kurzeme",
+   "lon": 21.968,
+   "lat": 56.968,
+   "status": "rest",
+   "shift": "12h",
+   "fatigue": 61,
+   "comms": "radio",
+   "speed": 50,
+   "people": 6,
+   "note": "Rest window until 08:00"
+  },
+  {
+   "id": "U04",
+   "callsign": "LGB K9-1",
+   "capability": "k9",
+   "base": "Rīga",
+   "region": "Rīga",
+   "lon": 24.1052,
+   "lat": 56.9496,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 18,
+   "comms": "radio",
+   "speed": 65,
+   "people": 3,
+   "note": "Area search, trailing"
+  },
+  {
+   "id": "U05",
+   "callsign": "LGB K9-2",
+   "capability": "k9",
+   "base": "Valmiera",
+   "region": "Vidzeme",
+   "lon": 25.4275,
+   "lat": 57.5412,
+   "status": "available",
+   "shift": "12h",
+   "fatigue": 44,
+   "comms": "radio",
+   "speed": 65,
+   "people": 3,
+   "note": "Area search"
+  },
+  {
+   "id": "U06",
+   "callsign": "LGB K9-3",
+   "capability": "k9",
+   "base": "Rēzekne",
+   "region": "Latgale",
+   "lon": 27.33,
+   "lat": 56.5099,
+   "status": "available",
+   "shift": "12h",
+   "fatigue": 29,
+   "comms": "radio",
+   "speed": 65,
+   "people": 2,
+   "note": "Area search, young dog"
+  },
+  {
+   "id": "U07",
+   "callsign": "LGB DRN-1",
+   "capability": "drone",
+   "base": "Rīga",
+   "region": "Rīga",
+   "lon": 24.1052,
+   "lat": 56.9496,
+   "status": "enroute",
+   "shift": "24h",
+   "fatigue": 12,
+   "comms": "lte",
+   "speed": 90,
+   "people": 2,
+   "note": "Airborne, transit to staging",
+   "assignedTo": "INC-0446",
+   "assignedAt": -6,
+   "etaMin": 22
+  },
+  {
+   "id": "U08",
+   "callsign": "LGB DRN-2",
+   "capability": "drone",
+   "base": "Daugavpils",
+   "region": "Latgale",
+   "lon": 26.5356,
+   "lat": 55.8747,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 20,
+   "comms": "lte",
+   "speed": 90,
+   "people": 2,
+   "note": "Quad, thermal"
+  },
+  {
+   "id": "U09",
+   "callsign": "LGB DRN-3",
+   "capability": "drone",
+   "base": "Liepāja",
+   "region": "Kurzeme",
+   "lon": 21.0136,
+   "lat": 56.5051,
+   "status": "available",
+   "shift": "12h",
+   "fatigue": 33,
+   "comms": "lte",
+   "speed": 90,
+   "people": 1,
+   "note": "Quad, coastal"
+  },
+  {
+   "id": "U10",
+   "callsign": "LGB MED-1",
+   "capability": "medical",
+   "base": "Rīga",
+   "region": "Rīga",
+   "lon": 24.1052,
+   "lat": 56.9496,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 26,
+   "comms": "radio",
+   "speed": 70,
+   "people": 4,
+   "note": "Critical care team"
+  },
+  {
+   "id": "U11",
+   "callsign": "LGB MED-2",
+   "capability": "medical",
+   "base": "Daugavpils",
+   "region": "Latgale",
+   "lon": 26.5356,
+   "lat": 55.8747,
+   "status": "onscene",
+   "shift": "24h",
+   "fatigue": 48,
+   "comms": "radio",
+   "speed": 70,
+   "people": 3,
+   "note": "Committed to INC-0452 support",
+   "assignedTo": "INC-0452",
+   "assignedAt": -14,
+   "etaMin": 9
+  },
+  {
+   "id": "U12",
+   "callsign": "LGB BOAT-1",
+   "capability": "water",
+   "base": "Liepāja",
+   "region": "Kurzeme",
+   "lon": 21.0136,
+   "lat": 56.5051,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 31,
+   "comms": "marine vhf",
+   "speed": 40,
+   "people": 4,
+   "note": "RIB, sea state 3 limit"
+  },
+  {
+   "id": "U13",
+   "callsign": "LGB BOAT-2",
+   "capability": "water",
+   "base": "Ventspils",
+   "region": "Kurzeme",
+   "lon": 21.5644,
+   "lat": 57.3894,
+   "status": "available",
+   "shift": "12h",
+   "fatigue": 39,
+   "comms": "marine vhf",
+   "speed": 40,
+   "people": 3,
+   "note": "RIB, inshore"
+  },
+  {
+   "id": "U14",
+   "callsign": "LGB LOG-1",
+   "capability": "logistics",
+   "base": "Rīga",
+   "region": "Rīga",
+   "lon": 24.1052,
+   "lat": 56.9496,
+   "status": "available",
+   "shift": "24h",
+   "fatigue": 15,
+   "comms": "radio",
+   "speed": 60,
+   "people": 4,
+   "note": "Transport, power, lighting"
+  },
+  {
+   "id": "U15",
+   "callsign": "LGB GND-1",
+   "capability": "ground",
+   "base": "Valmiera",
+   "region": "Vidzeme",
+   "lon": 25.4275,
+   "lat": 57.5412,
+   "status": "available",
+   "shift": "12h",
+   "fatigue": 41,
+   "comms": "lte",
+   "speed": 60,
+   "people": 10,
+   "note": "Volunteer search line"
+  },
+  {
+   "id": "U16",
+   "callsign": "LGB GND-2",
+   "capability": "ground",
+   "base": "Rēzekne",
+   "region": "Latgale",
+   "lon": 27.33,
+   "lat": 56.5099,
+   "status": "available",
+   "shift": "12h",
+   "fatigue": 52,
+   "comms": "lte",
+   "speed": 60,
+   "people": 12,
+   "note": "Volunteer search line"
+  }
+ ],
+ "incidents": [
+  {
+   "id": "INC-0441",
+   "priority": "P1",
+   "type": "Missing child",
+   "title": "Child missing from beach sector, last seen 11:20",
+   "place": "Jūrmala, Majori",
+   "region": "Rīga",
+   "lon": 23.79,
+   "lat": 56.972,
+   "reportedMinAgo": 12,
+   "slaMin": 45,
+   "status": "new",
+   "needs": [
+    "k9",
+    "drone"
+   ],
+   "detail": "Seven year old, blue jacket. Tide turning 13:40. Beach and dune belt, 2 km of frontage.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0442",
+   "priority": "P1",
+   "type": "Structural collapse",
+   "title": "Roof collapse, two trapped, old warehouse",
+   "place": "Rīga, Sarkandaugava",
+   "region": "Rīga",
+   "lon": 24.12,
+   "lat": 56.997,
+   "reportedMinAgo": 8,
+   "slaMin": 30,
+   "status": "new",
+   "needs": [
+    "usar",
+    "medical"
+   ],
+   "detail": "Pre-1940 masonry, partial floor failure. Confined space, unstable east wall. Utilities isolated.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0443",
+   "priority": "P1",
+   "type": "Person in water",
+   "title": "Two swimmers overdue, offshore wind",
+   "place": "Liepāja, Karosta beach",
+   "region": "Kurzeme",
+   "lon": 21.0,
+   "lat": 56.53,
+   "reportedMinAgo": 6,
+   "slaMin": 25,
+   "status": "new",
+   "needs": [
+    "water",
+    "drone"
+   ],
+   "detail": "Witness reports two heads 400 m out. Offshore 6 m/s, water 12 °C. Drift south west.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0444",
+   "priority": "P1",
+   "type": "Missing person",
+   "title": "Dementia patient missing, forest edge",
+   "place": "Madona, Bērzaune",
+   "region": "Vidzeme",
+   "lon": 26.2,
+   "lat": 56.83,
+   "reportedMinAgo": 22,
+   "slaMin": 60,
+   "status": "new",
+   "needs": [
+    "k9",
+    "drone",
+    "ground"
+   ],
+   "detail": "82 year old, walked from care home 05:50. Dense spruce, bog 800 m north. Night temperatures near freezing.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0445",
+   "priority": "P2",
+   "type": "Flooding",
+   "title": "Flooded access road, four vehicles stranded",
+   "place": "Jēkabpils, A6 underpass",
+   "region": "Zemgale",
+   "lon": 25.87,
+   "lat": 56.51,
+   "reportedMinAgo": 35,
+   "slaMin": 120,
+   "status": "new",
+   "needs": [
+    "water",
+    "logistics"
+   ],
+   "detail": "70 cm standing water, two cars with occupants refusing to leave. Pump capacity on site: none.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0446",
+   "priority": "P2",
+   "type": "Missing hikers",
+   "title": "Two hikers overdue on Gauja trails",
+   "place": "Sigulda, Krimulda",
+   "region": "Rīga",
+   "lon": 24.84,
+   "lat": 57.16,
+   "reportedMinAgo": 40,
+   "slaMin": 90,
+   "status": "assigned",
+   "needs": [
+    "drone",
+    "ground"
+   ],
+   "detail": "Last contact 17:10 yesterday. Phones at 4% battery. Trail network with three river crossings.",
+   "responseMin": null,
+   "closedInMin": null,
+   "unit": "U07"
+  },
+  {
+   "id": "INC-0447",
+   "priority": "P2",
+   "type": "Medical evacuation",
+   "title": "Evacuation request, remote farm, suspected stroke",
+   "place": "Gulbene, Lejasciems",
+   "region": "Vidzeme",
+   "lon": 26.71,
+   "lat": 57.15,
+   "reportedMinAgo": 18,
+   "slaMin": 60,
+   "status": "new",
+   "needs": [
+    "medical",
+    "logistics"
+   ],
+   "detail": "Road unplowed, 2.4 km from hard surface. NMPD on scene, requesting critical care and transport.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0448",
+   "priority": "P3",
+   "type": "Evidence search",
+   "title": "Riverside evidence search, police request",
+   "place": "Daugavpils, Daugava bank",
+   "region": "Latgale",
+   "lon": 26.52,
+   "lat": 55.88,
+   "reportedMinAgo": 55,
+   "slaMin": 240,
+   "status": "new",
+   "needs": [
+    "k9"
+   ],
+   "detail": "Search area 300 by 60 m, reeds and mud. Police cordon in place. No time pressure stated.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0449",
+   "priority": "P1",
+   "type": "Missing person",
+   "title": "Missing adult, urban, no contact 36 h",
+   "place": "Daugavpils, Ķīmija",
+   "region": "Latgale",
+   "lon": 26.54,
+   "lat": 55.87,
+   "reportedMinAgo": 15,
+   "slaMin": 45,
+   "status": "new",
+   "needs": [
+    "k9",
+    "ground"
+   ],
+   "detail": "Left home without phone. Known psychiatric history. Family canvassing already under way.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0450",
+   "priority": "P2",
+   "type": "Drone survey",
+   "title": "Flood extent survey for municipality",
+   "place": "Krāslava, Daugava floodplain",
+   "region": "Latgale",
+   "lon": 27.16,
+   "lat": 55.89,
+   "reportedMinAgo": 70,
+   "slaMin": 180,
+   "status": "assigned",
+   "needs": [
+    "drone"
+   ],
+   "detail": "Mapping request from civil protection. 14 km of floodplain, daylight window closing 17:00.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0451",
+   "priority": "P3",
+   "type": "Welfare check",
+   "title": "Welfare check, no contact 48 h, isolated farm",
+   "place": "Talsi, Valdgale",
+   "region": "Kurzeme",
+   "lon": 22.6,
+   "lat": 57.25,
+   "reportedMinAgo": 90,
+   "slaMin": 240,
+   "status": "new",
+   "needs": [
+    "ground"
+   ],
+   "detail": "Neighbour reports post accumulating. No known risk factors. Access track unplowed.",
+   "responseMin": null,
+   "closedInMin": null
+  },
+  {
+   "id": "INC-0452",
+   "priority": "P1",
+   "type": "Fire support",
+   "title": "Rescue support at structure fire, possible occupants",
+   "place": "Rēzekne, Centrs",
+   "region": "Latgale",
+   "lon": 27.32,
+   "lat": 56.51,
+   "reportedMinAgo": 5,
+   "slaMin": 30,
+   "status": "onscene",
+   "needs": [
+    "usar",
+    "medical"
+   ],
+   "detail": "VUGD main effort. Our team on scene for search of upper floors and casualty care.",
+   "responseMin": 11,
+   "closedInMin": null,
+   "unit": "U11"
+  },
+  {
+   "id": "INC-0439",
+   "priority": "P2",
+   "type": "Missing person",
+   "title": "Missing teenager, found at bus station",
+   "place": "Valmiera",
+   "region": "Vidzeme",
+   "lon": 25.42,
+   "lat": 57.54,
+   "reportedMinAgo": 320,
+   "slaMin": 120,
+   "status": "closed",
+   "needs": [
+    "k9",
+    "ground"
+   ],
+   "detail": "Closed at 07:05. Located by patrol unit, unharmed. Search stood down.",
+   "responseMin": 11,
+   "closedInMin": 38
+  },
+  {
+   "id": "INC-0438",
+   "priority": "P1",
+   "type": "Person in water",
+   "title": "Swimmer recovered, resuscitation attempted",
+   "place": "Ventspils",
+   "region": "Kurzeme",
+   "lon": 21.56,
+   "lat": 57.39,
+   "reportedMinAgo": 400,
+   "slaMin": 25,
+   "status": "closed",
+   "needs": [
+    "water",
+    "medical"
+   ],
+   "detail": "Closed 06:20. Handover to NMPD at 06:04. Boat crew recovered casualty at 06:01.",
+   "responseMin": 21,
+   "closedInMin": 24
+  },
+  {
+   "id": "INC-0437",
+   "priority": "P2",
+   "type": "Structural collapse",
+   "title": "Scaffold collapse, one minor injury",
+   "place": "Ogre",
+   "region": "Rīga",
+   "lon": 24.6,
+   "lat": 56.82,
+   "reportedMinAgo": 480,
+   "slaMin": 60,
+   "status": "closed",
+   "needs": [
+    "usar",
+    "medical"
+   ],
+   "detail": "Closed 05:40. Single casualty, discharged on scene. Structure handed to site owner.",
+   "responseMin": 14,
+   "closedInMin": 26
+  },
+  {
+   "id": "INC-0436",
+   "priority": "P2",
+   "type": "Missing person",
+   "title": "Missing dog walker, found disoriented",
+   "place": "Cēsis",
+   "region": "Vidzeme",
+   "lon": 25.27,
+   "lat": 57.31,
+   "reportedMinAgo": 560,
+   "slaMin": 90,
+   "status": "closed",
+   "needs": [
+    "k9",
+    "ground"
+   ],
+   "detail": "Closed 05:15. Found 1.8 km from last point, hypothermic, transported.",
+   "responseMin": 19,
+   "closedInMin": 41
+  }
+ ],
+ "forecast": {
+  "note": "Illustrative demand model: regional baseline weight times hour-of-day factor. Not trained on real call data.",
+  "hours": [
+   "07",
+   "08",
+   "09",
+   "10",
+   "11",
+   "12",
+   "13",
+   "14",
+   "15",
+   "16",
+   "17",
+   "18"
+  ],
+  "regions": {
+   "Rīga": [
+    3,
+    4,
+    4,
+    3,
+    3,
+    4,
+    5,
+    5,
+    4,
+    4,
+    5,
+    6
+   ],
+   "Kurzeme": [
+    1,
+    1,
+    2,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2
+   ],
+   "Zemgale": [
+    1,
+    1,
+    1,
+    2,
+    2,
+    1,
+    2,
+    2,
+    1,
+    2,
+    2,
+    2
+   ],
+   "Vidzeme": [
+    1,
+    2,
+    2,
+    3,
+    2,
+    2,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3
+   ],
+   "Latgale": [
+    2,
+    2,
+    2,
+    2,
+    1,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    4
+   ]
+  },
+  "drivers": [
+   "Weekend coastal traffic: Jūrmala and Liepāja frontage risk rises after 11:00",
+   "Falling temperature after 16:00 raises exposure risk for open-air searches",
+   "Flood peak forecast on the Daugava this evening, Latgale and Zemgale lower reaches"
+  ]
+ },
+ "capabilities": {
+  "usar": "Urban search and rescue",
+  "k9": "Search dog",
+  "drone": "UAS",
+  "water": "Water rescue",
+  "medical": "Critical care",
+  "logistics": "Logistics",
+  "ground": "Ground search"
+ }
+}

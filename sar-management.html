@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SAROPS — search planning console · Sector Rīga</title>
+<meta name="description" content="Search planning console modelled on USCG SAROPS: last known position, Monte Carlo drift, probability of location, search action plan and the duty officer's decision.">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./assets/fonts-northstar.css">
+<link rel="stylesheet" href="./assets/sarpanel.css">
+</head>
+<body>
+
+<div class="console">
+
+  <header class="bar">
+    <h1 class="sr-only">SAROPS search planning console — Sector Rīga</h1>
+    <a class="brand" href="./index.html" title="Northstar Trust">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.2C12.7 7.9 16.1 11.3 22.8 12 16.1 12.7 12.7 16.1 12 22.8 11.3 16.1 7.9 12.7 1.2 12 7.9 11.3 11.3 7.9 12 1.2Z" fill="#F26B21"/><rect x="10.9" y="10.9" width="2.2" height="2.2" fill="#05090C"/></svg>
+      <b>SAROPS</b><span>search planning console</span>
+    </a>
+    <div class="bar-mid">
+      <span class="tag">Synthetic exercise</span>
+      <span>Case <b id="caseId">—</b></span>
+      <span>Datum <b id="datumTime">—</b></span>
+      <span>Model <b>MC-600</b></span>
+    </div>
+    <div class="bar-right">
+      <span class="svg-ok"><i></i><span>EDS synthetic</span></span>
+      <span class="clock" id="clock">06:40</span>
+      <button type="button" id="btnExport">Export plan</button>
+    </div>
+  </header>
+
+  <div class="workspace">
+
+    <aside class="left" aria-label="Case and environment" tabindex="0">
+      <section class="pane">
+        <h2>Cases <span id="caseCount">—</span></h2>
+        <div class="case-list" id="caseList"></div>
+      </section>
+
+      <section class="pane">
+        <h2>Search object</h2>
+        <dl class="kv" id="objectKv"></dl>
+      </section>
+
+      <section class="pane">
+        <h2>Environment <span>EDS</span></h2>
+        <div class="field">
+          <label for="wind">Wind speed <output id="windOut">6 m/s</output></label>
+          <input type="range" id="wind" min="0" max="20" step="1" value="6">
+        </div>
+        <div class="field">
+          <label for="windDir">Wind from <output id="windDirOut">240°</output></label>
+          <input type="range" id="windDir" min="0" max="350" step="10" value="240">
+        </div>
+        <div class="field">
+          <label for="cur">Surface current <output id="curOut">0.4 kn</output></label>
+          <input type="range" id="cur" min="0" max="2" step="0.1" value="0.4">
+        </div>
+        <div class="field">
+          <label for="lee">Leeway <output id="leeOut">3.5 %</output></label>
+          <input type="range" id="lee" min="0" max="6" step="0.5" value="3.5">
+        </div>
+        <button class="btn-run" id="btnRun" type="button">Run simulation · 600 particles</button>
+      </section>
+
+      <p class="disclaimer">Interface study modelled on the USCG SAROPS workstation. Synthetic exercise data, callsigns only. The drift model is a demonstration, not an operational product.</p>
+    </aside>
+
+    <main class="mapwrap">
+      <div class="mapbar" role="tablist" aria-label="Planning views">
+        <button class="tab" role="tab" aria-selected="true" data-tab="plan">Plan</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="prob">Probability</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="env">Environment</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="report">Report</button>
+        <span class="coords" id="coords">—</span>
+      </div>
+      <div class="map">
+        <div id="mapHost"></div>
+        <div class="legend">
+        <span><i style="background:#5FD0E6;opacity:.7"></i>Probability</span>
+        <span><i style="background:#F26B21"></i>Datum · search legs</span>
+          <span><i style="background:#9FB6C2"></i>SRU</span>
+        </div>
+        <div class="report" id="reportCard" hidden></div>
+        <div class="envcard" id="envCard" hidden></div>
+        <div class="scale" id="scale">20 km</div>
+        <svg class="north" viewBox="0 0 26 34" aria-hidden="true">
+          <path d="M13 2 22 30 13 24 4 30Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <text x="13" y="33" text-anchor="middle" font-size="6" fill="currentColor" font-family="DM Mono, monospace">N</text>
+        </svg>
+      </div>
+    </main>
+
+    <aside class="right" aria-label="Probability and plan" tabindex="0">
+      <section class="pane">
+        <h2>Probability of location <span>POL</span></h2>
+        <table class="pol-table">
+          <thead><tr><th>Cell</th><th>Position</th><th>P</th><th>Cum</th></tr></thead>
+          <tbody id="polTable"></tbody>
+        </table>
+        <p class="pol-note" id="polNote">Run the simulation to populate the probability grid.</p>
+      </section>
+
+      <section class="pane">
+        <h2>Search action plan <span>SAP</span></h2>
+        <div class="podpair">
+          <div><b id="pod">—</b><span>POD</span></div>
+          <div><b id="pos">—</b><span>POS</span></div>
+        </div>
+        <dl class="kv" id="planKv"></dl>
+        <div class="actions">
+          <button class="btn-approve" id="btnApprove" type="button">Approve plan</button>
+          <button class="btn-modify" id="btnModify" type="button">Modify</button>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <div class="bottom" role="region" aria-label="Units and decisions">
+    <section class="pane" aria-label="Search and rescue units" tabindex="0">
+      <h2>Search and rescue units <span>SRU · <b id="sruCount">—</b></span></h2>
+      <table class="sru-table">
+        <thead><tr><th>Unit</th><th>Capability</th><th>Base</th><th>Status</th><th>Speed</th><th>Fatigue</th><th>ETA</th></tr></thead>
+        <tbody id="sruTable"></tbody>
+      </table>
+    </section>
+
+    <section class="pane" aria-label="Decision ledger" tabindex="0">
+      <h2>Decision ledger <span id="ledgerCount">0 this shift</span></h2>
+      <div class="ledger-list" id="ledger"></div>
+    </section>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <h3 id="modalTitle">Modify the plan</h3>
+    <p>The console proposes. A search planner signs. Record what you changed and why — the after-action review reads this line.</p>
+    <div class="field2">
+      <label for="modReason">Reason</label>
+      <select id="modReason"></select>
+    </div>
+    <div class="field2">
+      <label for="modNote">What changed</label>
+      <textarea id="modNote" placeholder="e.g. sea state 4 on the outer legs, moved the track inshore"></textarea>
+    </div>
+    <div class="row-btns">
+      <button class="btn-modify" type="button" id="modCancel">Cancel</button>
+      <button class="btn-approve" type="button" id="modConfirm">Record and approve</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="./sar/data.js"></script>
+<script src="./assets/sarpanel.js"></script>
+</body>
+</html>
